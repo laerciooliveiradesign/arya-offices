@@ -1,7 +1,7 @@
 /* =============================================================================
    ARYA OFFICES — Em Breve
-   Aesthetic direction: editorial premium / architectural / boutique hotel
-   Type: Fraunces (display serif variable) + Archivo (body)
+   Aesthetic direction: arquitetural premium / boutique editorial
+   Type: Jost (tipografia oficial da marca — sans-serif geométrica)
    ============================================================================= */
 
 /* --------------------------------------------------------------------------- *
@@ -52,8 +52,10 @@ ul, ol { list-style: none; }
   --c-line-dark:    rgba(14, 6, 6, 0.18);
 
   /* ── Type ────────────────────────────────────────────────────────── */
-  --f-display: 'Fraunces', 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
-  --f-body:    'Archivo', 'Helvetica Neue', system-ui, sans-serif;
+  /* Jost é a tipografia oficial da marca Arya Offices.
+     Uma sans-serif geométrica moderna, usada em display e corpo. */
+  --f-display: 'Jost', 'Futura', 'Helvetica Neue', system-ui, sans-serif;
+  --f-body:    'Jost', 'Helvetica Neue', system-ui, sans-serif;
 
   /* ── Rhythm ──────────────────────────────────────────────────────── */
   --s-section:  clamp(5rem, 12vh, 9rem);
@@ -152,7 +154,6 @@ body {
   font-family: var(--f-display);
   font-style: italic;
   font-weight: 300;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--c-gold);
   line-height: 1;
@@ -180,7 +181,6 @@ body {
 .section-title {
   font-family: var(--f-display);
   font-weight: 300;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(2rem, 5vw, 3.75rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -366,7 +366,6 @@ body {
   margin-top: 1.75rem;
   font-family: var(--f-display);
   font-weight: 200;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(2.5rem, 7.5vw, 6.5rem);
   line-height: 0.98;
   letter-spacing: -0.025em;
@@ -379,8 +378,7 @@ body {
   font-style: italic;
   font-weight: 300;
   color: var(--c-gold);
-  font-variation-settings: "opsz" 144;
-}
+  }
 
 .hero__cta {
   margin-top: clamp(2rem, 5vh, 3rem);
@@ -447,7 +445,6 @@ body {
 .manifesto__title {
   font-family: var(--f-display);
   font-weight: 200;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(2rem, 5.2vw, 4.25rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
@@ -724,7 +721,6 @@ body {
 .offer__title {
   font-family: var(--f-display);
   font-weight: 300;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(1.5rem, 2.2vw, 1.9rem);
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -805,7 +801,6 @@ body {
 .contact__title {
   font-family: var(--f-display);
   font-weight: 200;
-  font-variation-settings: "opsz" 144;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.025em;
@@ -1012,7 +1007,6 @@ body {
 .footer__tagline {
   font-family: var(--f-display);
   font-weight: 300;
-  font-variation-settings: "opsz" 144;
   font-size: 1.2rem;
   line-height: 1.3;
   color: var(--c-cream);
