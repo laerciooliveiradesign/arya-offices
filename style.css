@@ -161,12 +161,12 @@ body {
 .hero__title {
   font-family: var(--f-display);
   font-weight: 300;
-  font-size: clamp(2.1rem, 5.2vw, 4.5rem);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--c-cream);
-  max-width: 16ch;
   margin: 0 auto;
+  max-width: 40ch;
   animation: heroFade 1.3s var(--ease-out) 0.4s both;
 }
 
@@ -246,9 +246,13 @@ body {
 
 @media (max-width: 640px) {
   .hero__content { gap: 1.75rem; }
-  .hero__logo { height: clamp(90px, 28vw, 140px); }
-  .hero__title { line-height: 1.18; max-width: 14ch; }
-  .kicker { gap: 0.6rem; letter-spacing: 0.22em; font-size: 0.65rem; }
+  .hero__logo { height: clamp(80px, 22vw, 130px); }
+  .hero__title {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    line-height: 1.28;
+    max-width: none;
+  }
+  .kicker { gap: 0.6rem; letter-spacing: 0.22em; font-size: 0.62rem; }
   .kicker__dot { font-size: 0.85rem; }
 }
 
