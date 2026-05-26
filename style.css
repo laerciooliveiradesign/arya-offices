@@ -129,10 +129,13 @@ body {
 /* ─── Logo grande ──────────────────────────────── */
 .hero__logo {
   width: auto;
-  height: clamp(110px, 16vw, 200px);
+  height: clamp(150px, 19vw, 260px);
   filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
   animation: heroFade 1.2s var(--ease-out) 0.05s both;
 }
+
+/* Controle de quebra de linha condicional (default: desktop) */
+.br-mobile { display: none; }
 
 /* ─── Kicker ───────────────────────────────────── */
 .kicker {
@@ -246,14 +249,15 @@ body {
 
 @media (max-width: 640px) {
   .hero__content { gap: 1.75rem; }
-  .hero__logo { height: clamp(80px, 22vw, 130px); }
+  .hero__logo { height: clamp(110px, 32vw, 180px); }
   .hero__title {
-    font-size: clamp(1.4rem, 6.5vw, 2.2rem);
-    line-height: 1.22;
-    max-width: none;
+    font-size: clamp(1.2rem, 5.2vw, 1.85rem);
+    line-height: 1.3;
+    max-width: 30ch;
+    letter-spacing: -0.01em;
   }
-  .kicker { gap: 0.6rem; letter-spacing: 0.22em; font-size: 0.62rem; }
-  .kicker__dot { font-size: 0.85rem; }
+  .br-mobile { display: inline; }
+  .kicker { font-size: 0.62rem; letter-spacing: 0.28em; }
 }
 
 @media (max-width: 480px) {
