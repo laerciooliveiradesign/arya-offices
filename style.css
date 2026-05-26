@@ -161,12 +161,12 @@ body {
 .hero__title {
   font-family: var(--f-display);
   font-weight: 300;
-  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.7rem, 3.8vw, 3.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--c-cream);
   margin: 0 auto;
-  max-width: 40ch;
+  max-width: 38ch;
   animation: heroFade 1.3s var(--ease-out) 0.4s both;
 }
 
@@ -248,8 +248,8 @@ body {
   .hero__content { gap: 1.75rem; }
   .hero__logo { height: clamp(80px, 22vw, 130px); }
   .hero__title {
-    font-size: clamp(1.1rem, 5vw, 1.6rem);
-    line-height: 1.28;
+    font-size: clamp(1.4rem, 6.5vw, 2.2rem);
+    line-height: 1.22;
     max-width: none;
   }
   .kicker { gap: 0.6rem; letter-spacing: 0.22em; font-size: 0.62rem; }
