@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Picture from '../components/Picture.astro';
+
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+
+const plugPlay = {
+  inclusos: [
+    'Mobília corporativa instalada',
+    'Internet redundante de alta capacidade',
+    'Recepção, segurança e limpeza inclusas',
+    'Salas de reunião compartilhadas',
+    'Climatização e energia prontas',
+    'Áreas de convivência e rooftop',
+  ],
+  fotos: [
+    { name: 'interior-01', label: 'Estações de trabalho' },
+    { name: 'Enscape_2025-07-25-18-28-18', label: 'Sala de reuniões' },
+    { name: 'interior-02', label: 'Áreas de convivência' },
+  ],
+};
+
+const porM2 = {
+  inclusos: [
+    'Pavimentos de 1 a 5 disponíveis',
+    'Layout e planta sob medida',
+    'Personalização de marca e ambientes',
+    'Infraestrutura compartilhada premium',
+    'Contratos flexíveis de longa duração',
+    'Escalabilidade conforme o crescimento',
+  ],
+  fotos: [
+    { name: 'Enscape_2025-07-25-18-19-59', label: 'Lobby corporativo' },
+    { name: 'Enscape_2025-07-25-18-40-02', label: 'Planta ampla' },
+    { name: 'interior-04', label: 'Ambientes integrados' },
+  ],
+};
+---
+<BaseLayout
+  title="Locações — Arya Offices | Plug & Play ou por m²"
+  description="Dois modelos de locação no Arya Offices: Plug & Play (pronto para operar) ou por m² (personalizável). Escritórios para empresas de tecnologia em Uberlândia."
+  path="/locacoes"
+>
+  <Header active="locacoes" />
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="page-hero__media"><Picture name="Enscape_2025-07-25-18-20-47" alt="Espaços do Arya Offices" eager width={1920} height={1080} /></div>
+      <div class="page-hero__veil"></div>
+      <div class="container page-hero__inner">
+        <span class="kicker">Modelos de locação</span>
+        <h1 class="h1">Escolha como ocupar<br />o seu espaço.</h1>
+        <nav class="breadcrumb" aria-label="Trilha"><a href="/home">Início</a> / <span>Locações</span></nav>
+      </div>
+    </section>
+
+    <!-- PLUG & PLAY -->
+    <section class="section section--dark model" id="plug-play">
+      <div class="container">
+        <header class="model__head" data-reveal>
+          <div>
+            <span class="sec-num">01</span>
+            <span class="kicker">Pronto para operar</span>
+            <h2 class="h2 mt-2">Plug &amp; Play</h2>
+          </div>
+          <p class="model__lead lead">
+            Salas mobiliadas, conectadas e operacionais desde o primeiro dia.
+            Para times que precisam funcionar antes de mobiliar.
+          </p>
+        </header>
+
+        <div class="model__inclusos" data-reveal>
+          {plugPlay.inclusos.map((i) => (
+            <div class="incluso"><span class="incluso__mark" aria-hidden="true"></span>{i}</div>
+          ))}
+        </div>
+
+        <div class="model__gal" data-reveal>
+          {plugPlay.fotos.map((f) => (
+            <figure class="model__shot">
+              <Picture name={f.name} alt={f.label} width={900} height={640} />
+              <figcaption>{f.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <a class="btn btn--outline-gold" href="/contato">Quero o modelo Plug &amp; Play</a>
+      </div>
+    </section>
+
+    <!-- POR M² -->
+    <section class="section section--bordo model" id="por-m2">
+      <div class="container">
+        <header class="model__head" data-reveal>
+          <div>
+            <span class="sec-num">02</span>
+            <span class="kicker">Sob medida</span>
+            <h2 class="h2 mt-2">Por m²</h2>
+          </div>
+          <p class="model__lead lead">
+            Metragem flexível e pavimentos de 1 a 5 para personalizar a planta
+            de acordo com a identidade e a escala da sua operação.
+          </p>
+        </header>
+
+        <div class="model__inclusos" data-reveal>
+          {porM2.inclusos.map((i) => (
+            <div class="incluso"><span class="incluso__mark" aria-hidden="true"></span>{i}</div>
+          ))}
+        </div>
+
+        <div class="model__gal" data-reveal>
+          {porM2.fotos.map((f) => (
+            <figure class="model__shot">
+              <Picture name={f.name} alt={f.label} width={900} height={640} />
+              <figcaption>{f.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <a class="btn btn--outline-gold" href="/contato">Quero o modelo por m²</a>
+      </div>
+    </section>
+
+    <!-- Comparativo -->
+    <section class="section section--light">
+      <div class="container container--tight">
+        <header class="sec-head sec-head--center" data-reveal>
+          <span class="kicker kicker--center">Comparativo</span>
+          <h2 class="h2">Qual modelo combina<br />com a sua empresa?</h2>
+        </header>
+
+        <div class="compare" data-reveal>
+          <div class="compare__row compare__row--head">
+            <span></span><span>Plug &amp; Play</span><span>Por m²</span>
+          </div>
+          <div class="compare__row"><span>Pronto para operar</span><span class="yes">Imediato</span><span>Após adequação</span></div>
+          <div class="compare__row"><span>Mobília</span><span class="yes">Inclusa</span><span>Sob medida</span></div>
+          <div class="compare__row"><span>Personalização</span><span>Padrão</span><span class="yes">Total</span></div>
+          <div class="compare__row"><span>Escala</span><span>Salas</span><span class="yes">Até 5 pavimentos</span></div>
+          <div class="compare__row"><span>Ideal para</span><span>Startups / times enxutos</span><span>Empresas consolidadas</span></div>
+        </div>
+
+        <div style="text-align:center" class="mt-5" data-reveal>
+          <a class="btn btn--on-light btn--lg" href={wa} target="_blank" rel="noopener noreferrer">Tirar dúvidas no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .model__head { display: grid; grid-template-columns: 0.8fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: end; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .model__head .kicker { margin-top: 0.6rem; }
+  .model__lead { color: var(--stone); }
+  .section--light .model__lead { color: var(--stone-deep); }
+
+  .model__inclusos {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem 2rem;
+    padding-block: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--line-cream-soft);
+    border-bottom: 1px solid var(--line-cream-soft);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  .incluso { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; }
+  .incluso__mark { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
+
+  .model__gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; }
+  .model__shot figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
+  .model__shot figcaption::before { content: "— "; color: var(--gold); }
+
+  /* Comparativo */
+  .compare { border: 1px solid var(--line-ink); }
+  .compare__row { display: grid; grid-template-columns: 1.2fr 1fr 1fr; }
+  .compare__row > span { padding: 1rem 1.25rem; border-bottom: 1px solid var(--line-ink-soft); font-size: 0.95rem; }
+  .compare__row > span:first-child { color: var(--stone-deep); border-right: 1px solid var(--line-ink-soft); }
+  .compare__row > span:not(:first-child) { border-right: 1px solid var(--line-ink-soft); }
+  .compare__row > span:last-child { border-right: 0; }
+  .compare__row--head > span { background: var(--bordo); color: var(--cream); font-weight: 600; letter-spacing: 0.04em; }
+  .compare__row--head > span:first-child { color: var(--cream); }
+  .compare .yes { color: var(--gold-deep); font-weight: 600; }
+
+  @media (max-width: 880px) {
+    .model__head { grid-template-columns: 1fr; align-items: start; }
+    .model__inclusos { grid-template-columns: 1fr 1fr; }
+    .model__gal { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .model__inclusos { grid-template-columns: 1fr; }
+    .compare__row { grid-template-columns: 1fr; }
+    .compare__row > span { border-right: 0 !important; }
+    .compare__row--head { display: none; }
+    .compare__row > span:first-child { background: rgba(80,21,15,0.06); font-weight: 600; }
+  }
+</style>

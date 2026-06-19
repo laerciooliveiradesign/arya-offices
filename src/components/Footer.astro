@@ -1,0 +1,118 @@
+---
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+const year = new Date().getFullYear();
+---
+<footer class="ft" role="contentinfo">
+  <div class="container">
+    <div class="ft__top">
+      <div class="ft__brand">
+        <img src="/assets/logo-light.svg" alt="Arya Offices" width="150" height="50" />
+        <p class="ft__tag">
+          Onde empresas de tecnologia<br />encontram <strong>flexibilidade</strong> e <strong>conexão.</strong>
+        </p>
+      </div>
+
+      <nav class="ft__col" aria-label="Navegação do rodapé">
+        <h4 class="ft__head">Navegação</h4>
+        <a href="/home">Início</a>
+        <a href="/sobre">Sobre o Arya</a>
+        <a href="/locacoes">Locações</a>
+        <a href="/contato">Contato</a>
+      </nav>
+
+      <div class="ft__col">
+        <h4 class="ft__head">Contato</h4>
+        <a href={wa} target="_blank" rel="noopener noreferrer">+55 34 99829-3884</a>
+        <a href="https://www.instagram.com/aryaoffices/" target="_blank" rel="noopener noreferrer">@aryaoffices</a>
+        <a href="/contato">Agende uma visita</a>
+      </div>
+
+      <div class="ft__col">
+        <h4 class="ft__head">Endereço</h4>
+        <address>
+          Polo Tecnológico Sul<br />
+          Bairro Gávea<br />
+          Uberlândia · MG · Brasil
+        </address>
+      </div>
+    </div>
+
+    <div class="macron ft__macron" aria-hidden="true">
+      <span class="macron__dot"></span>
+    </div>
+
+    <div class="ft__bottom">
+      <p>© {year} Arya Offices · Todos os direitos reservados.</p>
+      <p class="ft__credit">Polo Tecnológico Sul · Uberlândia/MG</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    background: var(--bordo-deep);
+    color: var(--cream);
+    padding-block: clamp(3.5rem, 2rem + 5vw, 6rem) 2.5rem;
+    position: relative;
+  }
+  .ft::before {
+    content: "";
+    position: absolute; inset: 0 0 auto 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-gold), transparent);
+  }
+  .ft__top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: clamp(2rem, 1rem + 3vw, 4rem);
+  }
+  .ft__brand img { height: 44px; width: auto; margin-bottom: 1.5rem; }
+  .ft__tag {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--stone);
+    max-width: 30ch;
+  }
+  .ft__tag strong { color: var(--gold); font-weight: 500; }
+
+  .ft__col { display: flex; flex-direction: column; gap: 0.85rem; }
+  .ft__head {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .ft__col a, .ft__col address {
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.7;
+    color: var(--stone);
+    transition: color var(--t-fast) var(--ease);
+  }
+  .ft__col a:hover { color: var(--gold); }
+
+  .ft__macron { margin-block: clamp(2.5rem, 5vw, 4rem); }
+
+  .ft__bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: var(--fs-small);
+    letter-spacing: 0.08em;
+    color: var(--stone-dim);
+  }
+  .ft__credit { text-transform: uppercase; letter-spacing: 0.16em; }
+
+  @media (max-width: 880px) {
+    .ft__top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .ft__brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 520px) {
+    .ft__top { grid-template-columns: 1fr; }
+    .ft__bottom { flex-direction: column; gap: 0.5rem; }
+  }
+</style>

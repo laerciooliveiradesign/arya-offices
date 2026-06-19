@@ -1,0 +1,242 @@
+---
+interface Props {
+  active?: 'inicio' | 'sobre' | 'locacoes' | 'contato';
+}
+const { active } = Astro.props;
+
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+
+const links = [
+  { id: 'inicio',   label: 'Início',    href: '/home' },
+  { id: 'sobre',    label: 'Sobre',     href: '/sobre' },
+  { id: 'locacoes', label: 'Locações',  href: '/locacoes' },
+  { id: 'contato',  label: 'Contato',   href: '/contato' },
+];
+---
+<header class="hdr" data-header>
+  <div class="hdr__inner container">
+    <a class="hdr__logo" href="/home" aria-label="Arya Offices — início">
+      <img src="/assets/logo-light.svg" alt="Arya Offices" width="118" height="40" />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Navegação principal">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class:list={['hdr__link', { 'is-active': active === l.id }]}
+          aria-current={active === l.id ? 'page' : undefined}
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="hdr__cta" href={wa} target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7c1.7 1 3.7 1.5 5.6 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4zM12 21.7c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.5 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.5-4.4 9.9-9.9 9.9zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+      <span>Fale conosco</span>
+    </a>
+
+    <button class="hdr__burger" type="button" data-burger aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu mobile fullscreen -->
+<div class="mnav" id="mobile-menu" data-mobile-menu hidden>
+  <nav class="mnav__list" aria-label="Navegação móvel">
+    {links.map((l, i) => (
+      <a href={l.href} class:list={['mnav__link', { 'is-active': active === l.id }]} style={`--i:${i}`}>
+        <span class="mnav__num">0{i + 1}</span>
+        {l.label}
+      </a>
+    ))}
+  </nav>
+  <a class="mnav__wa btn btn--outline-gold" href={wa} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+  <div class="mnav__foot">
+    <span>Polo Tecnológico Sul · Uberlândia/MG</span>
+    <a href="https://www.instagram.com/aryaoffices/" target="_blank" rel="noopener noreferrer">@aryaoffices</a>
+  </div>
+</div>
+
+<style>
+  .hdr {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 100;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    transition: background var(--t-med) var(--ease), border-color var(--t-med) var(--ease), backdrop-filter var(--t-med) var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  .hdr.is-scrolled {
+    background: rgba(14, 6, 6, 0.82);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom-color: var(--line-cream-soft);
+  }
+  .hdr__inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+  .hdr__logo { flex: none; transition: opacity var(--t-fast) var(--ease); }
+  .hdr__logo:hover { opacity: 0.82; }
+  .hdr__logo img { height: 34px; width: auto; }
+
+  .hdr__nav {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+    margin-left: auto;
+  }
+  .hdr__link {
+    position: relative;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+    padding-block: 0.4rem;
+    transition: color var(--t-fast) var(--ease);
+  }
+  .hdr__link::after {
+    content: "";
+    position: absolute; left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-med) var(--ease);
+  }
+  .hdr__link:hover { color: var(--gold-soft); }
+  .hdr__link:hover::after,
+  .hdr__link.is-active::after { transform: scaleX(1); }
+  .hdr__link.is-active { color: var(--gold); }
+
+  .hdr__cta {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    transition: background var(--t-fast) var(--ease);
+  }
+  .hdr__cta:hover { background: var(--gold-soft); }
+
+  .hdr__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 34px; height: 34px;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    z-index: 120;
+  }
+  .hdr__burger span {
+    width: 24px; height: 1.5px;
+    background: var(--cream);
+    transition: transform var(--t-med) var(--ease), opacity var(--t-fast) var(--ease);
+  }
+  body.menu-open .hdr__burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  body.menu-open .hdr__burger span:nth-child(2) { opacity: 0; }
+  body.menu-open .hdr__burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile menu fullscreen */
+  .mnav {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    background: var(--bordo-deep);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: var(--header-h) clamp(1.5rem, 8vw, 4rem) 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--t-med) var(--ease), visibility var(--t-med);
+  }
+  .mnav::before {
+    content: "";
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(110% 80% at 80% 10%, rgba(80,21,15,0.6), transparent 60%);
+  }
+  body.menu-open .mnav { opacity: 1; visibility: visible; }
+  .mnav[hidden] { display: flex; }
+
+  .mnav__list { display: flex; flex-direction: column; gap: 0.4rem; position: relative; }
+  .mnav__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: clamp(2rem, 11vw, 3rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    padding-block: 0.5rem;
+    border-bottom: 1px solid var(--line-cream-soft);
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), color var(--t-fast) var(--ease);
+    transition-delay: calc(var(--i) * 0.06s + 0.1s);
+  }
+  body.menu-open .mnav__link { opacity: 1; transform: none; }
+  .mnav__link:hover, .mnav__link.is-active { color: var(--gold); }
+  .mnav__num { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; }
+
+  .mnav__wa { position: relative; align-self: flex-start; }
+  .mnav__foot {
+    position: relative;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone-dim);
+    border-top: 1px solid var(--line-cream-soft); padding-top: 1.5rem;
+  }
+  .mnav__foot a:hover { color: var(--gold); }
+
+  @media (max-width: 880px) {
+    .hdr__nav, .hdr__cta { display: none; }
+    .hdr__burger { display: flex; }
+  }
+  @media (min-width: 881px) {
+    .mnav { display: none !important; }
+  }
+</style>
+
+<script>
+  // Header sólido ao scrollar
+  const header = document.querySelector('[data-header]');
+  const onScroll = () => {
+    if (window.scrollY > 24) header?.classList.add('is-scrolled');
+    else header?.classList.remove('is-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Menu mobile
+  const burger = document.querySelector('[data-burger]');
+  const menu = document.querySelector('[data-mobile-menu]');
+  const toggle = (open: boolean) => {
+    document.body.classList.toggle('menu-open', open);
+    burger?.setAttribute('aria-expanded', String(open));
+    burger?.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  burger?.addEventListener('click', () => {
+    toggle(!document.body.classList.contains('menu-open'));
+  });
+  menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggle(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) toggle(false);
+  });
+</script>

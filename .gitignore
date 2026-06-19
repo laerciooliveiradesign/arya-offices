@@ -8,6 +8,10 @@ node_modules/
 out/
 dist/
 build/
+.astro/
+
+# Preview helpers locais
+_preview-mobile.html
 
 # Environment
 .env
@@ -36,3 +40,4 @@ yarn-error.log*
 
 # Originals (versões grandes antes da otimização — manter local)
 assets/fotos-originais/
+public/assets/fotos-originais/

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Picture from '../components/Picture.astro';
+
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+---
+<BaseLayout
+  title="Arya Offices — Em breve · Polo Tecnológico Sul · Uberlândia"
+  description="Onde empresas de tecnologia encontram flexibilidade e conexão. Polo Tecnológico Sul, Uberlândia/MG. Em breve."
+  path="/"
+>
+  <main id="main">
+    <section class="cc" aria-label="Arya Offices — Site em construção">
+      <div class="cc__media" aria-hidden="true">
+        <Picture name="FachadaAryaNoite" alt="" eager width={1920} height={1280} />
+      </div>
+      <div class="cc__veil" aria-hidden="true"></div>
+
+      <div class="cc__inner">
+        <img class="cc__logo" src="/assets/logo-light.svg" alt="Arya Offices" width="380" height="127" fetchpriority="high" />
+        <p class="cc__kicker">Site em Construção</p>
+        <h1 class="cc__title">
+          Onde empresas de tecnologia<br />
+          encontram <strong>flexibilidade</strong><br class="cc__br" />
+          e <strong>conexão.</strong>
+        </h1>
+        <div class="cc__cta">
+          <a class="btn" href={wa} target="_blank" rel="noopener noreferrer">
+            <span>Falar no WhatsApp</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7c1.7 1 3.7 1.5 5.6 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4zM12 21.7c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.5 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.5-4.4 9.9-9.9 9.9zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/aryaoffices/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.81.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.81-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.81-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.81.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.34 2.69.93 3.36.62 4.15.32 4.91.12 5.79.07 7.06.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.34 20.65.93 19.86.62 19.1.32 18.22.12 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+            <span>@aryaoffices</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .cc {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: clamp(2rem, 6vh, 4rem) clamp(1.5rem, 5vw, 4.5rem);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cc__media { position: absolute; inset: 0; z-index: -2; }
+  .cc__media :global(img) {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.88) contrast(1.04);
+    animation: ccZoom 22s var(--ease) forwards;
+  }
+  @keyframes ccZoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+  .cc__veil {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(80,21,15,0.30), transparent 70%),
+      linear-gradient(180deg, rgba(14,6,6,0.62), rgba(14,6,6,0.48) 40%, rgba(14,6,6,0.72));
+  }
+  .cc__inner {
+    width: 100%; max-width: 880px; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    gap: clamp(2rem, 4.5vh, 3.5rem);
+  }
+  .cc__logo {
+    width: auto; height: clamp(150px, 19vw, 260px);
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.35));
+    animation: ccFade 1.2s var(--ease) 0.05s both;
+  }
+  .cc__kicker {
+    font-size: clamp(0.72rem, 0.65rem + 0.2vw, 0.85rem);
+    font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase;
+    color: var(--cream); opacity: 0.82;
+    animation: ccFade 1.2s var(--ease) 0.25s both;
+  }
+  .cc__title {
+    font-size: clamp(1.7rem, 3.8vw, 3.4rem);
+    font-weight: 300; line-height: 1.2; letter-spacing: -0.02em;
+    color: var(--cream); max-width: 38ch; margin: 0 auto;
+    animation: ccFade 1.3s var(--ease) 0.4s both;
+  }
+  .cc__title strong { font-weight: 700; color: var(--gold); }
+  .cc__br { display: none; }
+  .cc__cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; animation: ccFade 1.2s var(--ease) 0.6s both; }
+  @keyframes ccFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 640px) {
+    .cc__inner { gap: 1.75rem; }
+    .cc__logo { height: clamp(110px, 32vw, 180px); }
+    .cc__title { font-size: clamp(1.55rem, 6.5vw, 2.25rem); line-height: 1.28; }
+    .cc__br { display: inline; }
+    .cc__kicker { font-size: 0.72rem; }
+  }
+  @media (max-width: 480px) {
+    .cc__cta { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+    .cc__cta .btn { width: 100%; }
+  }
+</style>

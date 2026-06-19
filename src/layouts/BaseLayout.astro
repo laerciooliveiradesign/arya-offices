@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  /** Caminho canônico relativo, ex: "/sobre" */
+  path?: string;
+}
+
+const {
+  title = 'Arya Offices — Polo Tecnológico Sul · Uberlândia',
+  description = 'Onde empresas de tecnologia encontram flexibilidade e conexão. Locação plug & play ou por m² no Polo Tecnológico Sul de Uberlândia.',
+  ogImage = '/assets/og-image.jpg',
+  path = '',
+} = Astro.props;
+
+const site = 'https://aryaoffices.com.br';
+const canonical = `${site}${path}`;
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
+const year = new Date().getFullYear();
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="author" content="Arya Offices" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#0E0606" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImageAbs} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Arya Offices — Polo Tecnológico Sul, Uberlândia/MG" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Arya Offices" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageAbs} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+
+  <!-- Fonts: Jost (oficial da marca) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Arya Offices',
+    description,
+    url: site,
+    telephone: '+5534998293884',
+    image: `${site}/assets/og-image.jpg`,
+    logo: `${site}/assets/logo.svg`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Polo Tecnológico Sul, Bairro Gávea',
+      addressLocality: 'Uberlândia',
+      addressRegion: 'MG',
+      addressCountry: 'BR',
+    },
+    sameAs: ['https://www.instagram.com/aryaoffices/'],
+  })} />
+
+  <!-- ───────── TODO: Google Analytics 4 (descomentar c/ ID real) ─────────
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  ──────────────────────────────────────────────────────────────────────── -->
+
+  <!-- ───────── TODO: Meta Pixel (descomentar c/ ID real) ─────────
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','PIXEL_ID'); fbq('track','PageView');
+  </script>
+  ──────────────────────────────────────────────────────────── -->
+</head>
+<body data-year={year}>
+  <div class="grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <slot />
+
+  <script>
+    // Reveal on scroll — compartilhado por todas as páginas
+    const els = document.querySelectorAll('[data-reveal]');
+    if (els.length) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      );
+      els.forEach((el) => io.observe(el));
+    }
+  </script>
+</body>
+</html>

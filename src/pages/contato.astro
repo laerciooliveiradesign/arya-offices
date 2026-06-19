@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Picture from '../components/Picture.astro';
+
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+// TODO: trocar SEU_ID pelo ID real do Formspree (destino: contato@aryaoffices.com.br)
+const FORMSPREE = 'https://formspree.io/f/SEU_ID';
+const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bairro+G%C3%A1vea,+Uberl%C3%A2ndia+-+MG&output=embed';
+---
+<BaseLayout
+  title="Contato — Arya Offices | Agende sua visita"
+  description="Fale com o Arya Offices. Agende uma visita guiada ao edifício no Polo Tecnológico Sul de Uberlândia ou converse pelo WhatsApp."
+  path="/contato"
+>
+  <Header active="contato" />
+
+  <main id="main">
+    <section class="page-hero page-hero--short">
+      <div class="page-hero__media"><Picture name="FachadaAryaNoite" alt="Fachada do Arya Offices à noite" eager width={1920} height={1080} /></div>
+      <div class="page-hero__veil"></div>
+      <div class="container page-hero__inner">
+        <span class="kicker">Contato</span>
+        <h1 class="h1">Vamos conversar<br />sobre o seu espaço.</h1>
+        <nav class="breadcrumb" aria-label="Trilha"><a href="/home">Início</a> / <span>Contato</span></nav>
+      </div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="container contact-grid">
+        <!-- Form -->
+        <div class="contact-form-wrap" data-reveal>
+          <span class="sec-num">01</span>
+          <h2 class="h3 mt-1">Agende uma visita</h2>
+          <p class="mt-2" style="color:var(--stone);max-width:42ch">
+            Preencha o formulário e nossa equipe entra em contato para marcar uma visita guiada
+            ao edifício.
+          </p>
+
+          <form class="cform mt-4" action={FORMSPREE} method="POST" data-form novalidate>
+            <div class="field">
+              <input type="text" id="nome" name="nome" required autocomplete="name" placeholder=" " />
+              <label for="nome">Nome completo</label>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder=" " />
+                <label for="email">E-mail</label>
+              </div>
+              <div class="field">
+                <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder=" " />
+                <label for="telefone">Telefone</label>
+              </div>
+            </div>
+            <div class="field">
+              <input type="text" id="empresa" name="empresa" autocomplete="organization" placeholder=" " />
+              <label for="empresa">Empresa <span class="opt">(opcional)</span></label>
+            </div>
+            <div class="field field--select">
+              <select id="modelo" name="modelo" required>
+                <option value="" disabled selected>Modelo de interesse</option>
+                <option value="Plug & Play">Plug &amp; Play (pronto para operar)</option>
+                <option value="Por m²">Por m² (personalizável)</option>
+                <option value="Não sei ainda">Ainda não sei — quero orientação</option>
+              </select>
+            </div>
+            <div class="field">
+              <textarea id="mensagem" name="mensagem" rows="4" placeholder=" "></textarea>
+              <label for="mensagem">Mensagem <span class="opt">(opcional)</span></label>
+            </div>
+
+            <button type="submit" class="btn btn--lg" data-submit>
+              <span>Enviar mensagem</span>
+              <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true"><line x1="0" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1"/><polyline points="15,1 21,6 15,11" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+            </button>
+
+            <p class="cform__status" data-status role="status" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <!-- Info + Mapa -->
+        <aside class="contact-info" data-reveal style="--reveal-delay:.1s">
+          <div class="info-block">
+            <span class="info-label">WhatsApp</span>
+            <a class="info-link" href={wa} target="_blank" rel="noopener noreferrer">+55 34 99829-3884</a>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Instagram</span>
+            <a class="info-link" href="https://www.instagram.com/aryaoffices/" target="_blank" rel="noopener noreferrer">@aryaoffices</a>
+          </div>
+          <div class="info-block">
+            <span class="info-label">Endereço</span>
+            <address class="info-addr">Polo Tecnológico Sul · Bairro Gávea<br />Uberlândia · MG · Brasil</address>
+          </div>
+
+          <a class="btn btn--ghost wa-big" href={wa} target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7c1.7 1 3.7 1.5 5.6 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.5-8.4zM12 21.7c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.5 4.4-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.4 2.9 7 0 5.5-4.4 9.9-9.9 9.9zm5.5-7.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+            <span>Prefere conversar agora?</span>
+          </a>
+
+          <div class="map">
+            <iframe
+              title="Mapa do Polo Tecnológico Sul, Uberlândia"
+              src={mapsEmbed}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero--short { min-height: clamp(40vh, 280px + 8vw, 52vh); }
+
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2.5rem, 5vw, 5rem); }
+
+  /* Form */
+  .cform { display: flex; flex-direction: column; gap: 1.5rem; max-width: 540px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .field { position: relative; }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line-cream);
+    padding: 0.85rem 0 0.6rem;
+    color: var(--cream);
+    font-size: 1rem;
+    transition: border-color var(--t-fast) var(--ease);
+  }
+  .field textarea { resize: vertical; min-height: 56px; }
+  .field select { cursor: pointer; }
+  .field select option { background: var(--bordo-deep); color: var(--cream); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold); }
+  .field label {
+    position: absolute; left: 0; top: 0.85rem;
+    color: var(--stone-dim); font-size: 1rem; pointer-events: none;
+    transition: transform var(--t-fast) var(--ease), color var(--t-fast) var(--ease), font-size var(--t-fast) var(--ease);
+  }
+  .field input:focus + label, .field input:not(:placeholder-shown) + label,
+  .field textarea:focus + label, .field textarea:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+  }
+  .field .opt { text-transform: none; letter-spacing: 0; color: var(--stone-dim); }
+  .field--select::after {
+    content: ""; position: absolute; right: 4px; top: 1.15rem;
+    width: 8px; height: 8px; border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold);
+    transform: rotate(45deg); pointer-events: none;
+  }
+  .cform button { align-self: flex-start; margin-top: 0.5rem; }
+  .cform__status { font-size: 0.9rem; min-height: 1.2em; }
+  .cform__status.ok { color: var(--gold-soft); }
+  .cform__status.err { color: #E89B7A; }
+
+  /* Info */
+  .contact-info { display: flex; flex-direction: column; gap: 1.75rem; }
+  .info-block { display: flex; flex-direction: column; gap: 0.35rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line-cream-soft); }
+  .info-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .info-link { font-size: 1.2rem; font-weight: 300; transition: color var(--t-fast) var(--ease); }
+  .info-link:hover { color: var(--gold); }
+  .info-addr { font-style: normal; font-size: 1.05rem; font-weight: 300; line-height: 1.6; color: var(--stone); }
+  .wa-big { align-self: flex-start; }
+
+  .map { margin-top: 0.5rem; border: 1px solid var(--line-cream-soft); }
+  .map iframe { width: 100%; height: 280px; border: 0; display: block; filter: grayscale(0.3) contrast(1.05); }
+
+  @media (max-width: 880px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // Envio do formulário via fetch (Formspree). Mostra estado de sucesso/erro.
+  const form = document.querySelector('[data-form]') as HTMLFormElement | null;
+  const statusEl = document.querySelector('[data-status]') as HTMLElement | null;
+  const submitBtn = document.querySelector('[data-submit]') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!statusEl || !submitBtn) return;
+
+    // Guard: avisa se o Formspree ainda não foi configurado
+    if (form.action.includes('SEU_ID')) {
+      statusEl.className = 'cform__status err';
+      statusEl.textContent = 'Formulário ainda não conectado. Use o WhatsApp por enquanto.';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const original = submitBtn.querySelector('span')!.textContent;
+    submitBtn.querySelector('span')!.textContent = 'Enviando…';
+    statusEl.className = 'cform__status';
+    statusEl.textContent = '';
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        form.reset();
+        statusEl.className = 'cform__status ok';
+        statusEl.textContent = 'Recebido! Entraremos em contato em breve.';
+      } else {
+        throw new Error('fail');
+      }
+    } catch {
+      statusEl.className = 'cform__status err';
+      statusEl.textContent = 'Não foi possível enviar. Tente pelo WhatsApp.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.querySelector('span')!.textContent = original;
+    }
+  });
+</script>

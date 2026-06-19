@@ -1,0 +1,368 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Picture from '../components/Picture.astro';
+
+const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+
+const gallery = [
+  { name: 'Enscape_2025-07-25-18-19-59', label: 'Lobby corporativo' },
+  { name: 'interior-01', label: 'Estações de trabalho' },
+  { name: 'Enscape_2025-07-25-18-28-18', label: 'Sala de reuniões' },
+  { name: 'interior-02', label: 'Áreas de convivência' },
+  { name: 'Enscape_2025-07-25-18-40-02', label: 'Vista externa' },
+  { name: 'interior-04', label: 'Ambientes integrados' },
+];
+
+const personas = [
+  { n: '01', t: 'Startups', d: 'Saia do coworking para um endereço próprio sem imobilizar capital em obra e mobília.' },
+  { n: '02', t: 'Scale-ups', d: 'Espaço que cresce junto: amplie de uma sala para um pavimento conforme o time expande.' },
+  { n: '03', t: 'Filiais', d: 'Base sólida em Minas Gerais para operações que chegam de fora com estrutura completa.' },
+  { n: '04', t: 'Consolidadas', d: 'Personalize pavimentos inteiros com a identidade da sua empresa e infraestrutura premium.' },
+];
+---
+<BaseLayout
+  title="Arya Offices — Escritórios para empresas de tecnologia em Uberlândia"
+  description="No Polo Tecnológico Sul de Uberlândia, o Arya Offices oferece locação plug & play ou por m² para empresas de tecnologia. Flexibilidade, infraestrutura e conexão."
+  path="/home"
+>
+  <Header active="inicio" />
+
+  <main id="main">
+
+    <!-- ░░ HERO ░░ -->
+    <section class="hero" aria-label="Apresentação">
+      <div class="hero__media" aria-hidden="true">
+        <Picture name="FachadaAryaNoite" alt="" eager width={1920} height={1280} />
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <p class="kicker" data-reveal>Polo Tecnológico Sul · Uberlândia · MG</p>
+        <h1 class="hero__title" data-reveal style="--reveal-delay:.08s">
+          Onde empresas de tecnologia<br />
+          encontram <strong>flexibilidade</strong><br />
+          e <strong>conexão.</strong>
+        </h1>
+        <p class="hero__sub lead" data-reveal style="--reveal-delay:.18s">
+          Escritórios de alto padrão para locar prontos para operar ou
+          personalizar por metro quadrado — no maior polo de tecnologia de Minas Gerais.
+        </p>
+        <div class="hero__cta" data-reveal style="--reveal-delay:.28s">
+          <a class="btn" href="/contato">
+            Agendar uma visita
+            <svg viewBox="0 0 24 12" width="22" height="11" aria-hidden="true"><line x1="0" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1"/><polyline points="15,1 21,6 15,11" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+          </a>
+          <a class="btn btn--ghost" href={wa} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#conceito" aria-label="Rolar para o conteúdo">
+        <span>Conheça</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ░░ CONCEITO ░░ -->
+    <section class="section section--dark" id="conceito">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">01</span>
+          <span class="kicker">O conceito</span>
+          <h2 class="h2">Dois modos de ocupar.<br />Um só endereço.</h2>
+        </header>
+
+        <div class="concept-grid">
+          <article class="concept-card" data-reveal>
+            <span class="concept-card__idx">Plug &amp; Play</span>
+            <h3 class="h3">Entre e <em>opere</em>.</h3>
+            <p>
+              Salas mobiliadas, conectadas e prontas para receber seu time no primeiro dia.
+              Sem obra, sem espera — apenas trabalho.
+            </p>
+            <ul class="ticks">
+              <li>Mobília corporativa instalada</li>
+              <li>Internet redundante de alta capacidade</li>
+              <li>Recepção, segurança e limpeza inclusas</li>
+              <li>Salas de reunião compartilhadas</li>
+            </ul>
+            <a class="concept-card__link" href="/locacoes">Ver o modelo Plug &amp; Play →</a>
+          </article>
+
+          <article class="concept-card concept-card--accent" data-reveal style="--reveal-delay:.12s">
+            <span class="concept-card__idx">Por m²</span>
+            <h3 class="h3">Construa do seu <em>jeito</em>.</h3>
+            <p>
+              Metragem flexível e pavimentos de 1 a 5 para personalizar a planta de
+              acordo com a identidade e a escala da sua operação.
+            </p>
+            <ul class="ticks">
+              <li>Pavimentos de 1 a 5 disponíveis</li>
+              <li>Layout e marca sob medida</li>
+              <li>Infraestrutura compartilhada premium</li>
+              <li>Contratos flexíveis de longa duração</li>
+            </ul>
+            <a class="concept-card__link" href="/locacoes">Ver o modelo por m² →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ LOCALIZAÇÃO ░░ -->
+    <section class="section section--light loc" id="localizacao">
+      <div class="container loc__grid">
+        <div class="loc__media" data-reveal>
+          <Picture name="Enscape_2025-07-25-18-01-37" alt="Entrada do edifício Arya Offices" width={1200} height={1500} />
+          <span class="loc__badge">Bairro Gávea · Uberlândia</span>
+        </div>
+
+        <div class="loc__body" data-reveal style="--reveal-delay:.1s">
+          <span class="sec-num">02</span>
+          <span class="kicker">A localização</span>
+          <h2 class="h2">No centro da inovação<br />de Uberlândia.</h2>
+          <div class="prose mt-3">
+            <p class="lead">
+              O Arya Offices nasce dentro do <strong>Polo Tecnológico Sul</strong> — o primeiro
+              loteamento empresarial público da cidade, dedicado a empresas de base tecnológica.
+            </p>
+            <p>
+              Infraestrutura completa: vias asfaltadas, iluminação em LED, estacionamento,
+              ciclovia e uma área de recreação generosa. Tudo cercado por uma vizinhança
+              qualificada de empresas que respiram tecnologia.
+            </p>
+          </div>
+          <div class="loc__stats">
+            <div><strong>30+</strong><span>lotes empresariais no polo</span></div>
+            <div><strong>1 – 5</strong><span>pavimentos disponíveis</span></div>
+            <div><strong>100%</strong><span>foco em tecnologia</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ GALERIA ░░ -->
+    <section class="section section--bordo gal" id="galeria">
+      <div class="container">
+        <header class="sec-head sec-head--center" data-reveal>
+          <span class="sec-num">03</span>
+          <span class="kicker kicker--center kicker--light">O lugar</span>
+          <h2 class="h2">Cada detalhe, pensado<br />para o trabalho que importa.</h2>
+        </header>
+      </div>
+
+      <div class="gal__track" data-reveal>
+        {gallery.map((g) => (
+          <figure class="gal__item">
+            <Picture name={g.name} alt={g.label} width={1100} height={780} />
+            <figcaption>{g.label}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- ░░ PARA QUEM É ░░ -->
+    <section class="section section--dark who" id="para-quem">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">04</span>
+          <span class="kicker">Para quem é</span>
+          <h2 class="h2">Feito para empresas<br />em qualquer estágio.</h2>
+        </header>
+
+        <div class="who__grid">
+          {personas.map((p, i) => (
+            <article class="who__card" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
+              <span class="who__num">{p.n}</span>
+              <h3 class="who__t">{p.t}</h3>
+              <p>{p.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ░░ CTA FINAL ░░ -->
+    <section class="cta-final" aria-label="Agende uma visita">
+      <div class="cta-final__media" aria-hidden="true">
+        <Picture name="Enscape_2025-07-25-18-20-47" alt="" width={1920} height={1080} />
+      </div>
+      <div class="cta-final__veil" aria-hidden="true"></div>
+      <div class="container cta-final__inner" data-reveal>
+        <span class="kicker kicker--center kicker--light">O próximo passo</span>
+        <h2 class="display">Reserve o seu<br />espaço no Arya.</h2>
+        <p class="lead">
+          Agende uma visita guiada ao edifício e descubra o modelo de locação ideal
+          para o momento da sua empresa.
+        </p>
+        <div class="cta-final__btns">
+          <a class="btn btn--lg" href="/contato">Agendar visita</a>
+          <a class="btn btn--ghost btn--lg" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ───────── HERO ───────── */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--header-h);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero__media { position: absolute; inset: 0; z-index: -2; }
+  .hero__media :global(img) {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: saturate(0.88) contrast(1.04);
+    animation: heroZoom 20s var(--ease) forwards;
+  }
+  @keyframes heroZoom { from { transform: scale(1.07); } to { transform: scale(1); } }
+  .hero__veil {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(14,6,6,0.82) 0%, rgba(14,6,6,0.42) 48%, rgba(14,6,6,0.28) 100%),
+      linear-gradient(180deg, rgba(14,6,6,0.55) 0%, transparent 30%, rgba(14,6,6,0.7) 100%);
+  }
+  .hero__inner { padding-block: clamp(3rem, 8vh, 6rem); max-width: 920px; }
+  .hero__title {
+    font-size: var(--fs-display);
+    font-weight: 300;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    margin-top: 1.5rem;
+  }
+  .hero__title strong { font-weight: 600; color: var(--gold); }
+  .hero__sub { margin-top: 1.75rem; max-width: 52ch; color: var(--stone); }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
+
+  .hero__scroll {
+    position: absolute;
+    left: 50%; bottom: 2rem; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+    font-size: 0.66rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--stone);
+  }
+  .hero__scroll-line { width: 1px; height: 48px; background: linear-gradient(var(--gold), transparent); }
+  @media (max-width: 640px) { .hero__scroll { display: none; } }
+
+  /* ───────── SECTION HEAD ───────── */
+  .sec-head { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .sec-head .kicker { margin-top: 0.2rem; }
+  .sec-head--center { align-items: center; text-align: center; }
+
+  /* ───────── CONCEITO ───────── */
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.25rem, 2vw, 2rem); }
+  .concept-card {
+    border: 1px solid var(--line-gold-soft);
+    background: linear-gradient(160deg, rgba(80,21,15,0.28), rgba(26,10,7,0.1));
+    padding: clamp(1.75rem, 3vw, 3rem);
+    display: flex; flex-direction: column;
+    transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+  }
+  .concept-card:hover { border-color: var(--line-gold); transform: translateY(-4px); }
+  .concept-card--accent { background: linear-gradient(160deg, rgba(80,21,15,0.5), rgba(26,10,7,0.15)); }
+  .concept-card__idx {
+    font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+  }
+  .concept-card h3 { margin-top: 1.2rem; }
+  .concept-card h3 em { color: var(--gold); font-style: italic; }
+  .concept-card > p { margin-top: 0.85rem; color: var(--stone); }
+  .ticks { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .ticks li {
+    position: relative; padding-left: 1.6rem; font-size: 0.95rem; color: var(--cream);
+  }
+  .ticks li::before {
+    content: ""; position: absolute; left: 0; top: 0.55em;
+    width: 8px; height: 8px; border-left: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+    transform: rotate(-45deg) translateY(-2px);
+  }
+  .concept-card__link {
+    margin-top: auto; padding-top: 1.75rem;
+    font-size: 0.82rem; letter-spacing: 0.08em; color: var(--gold);
+    transition: color var(--t-fast) var(--ease), letter-spacing var(--t-fast) var(--ease);
+  }
+  .concept-card__link:hover { color: var(--gold-soft); letter-spacing: 0.12em; }
+
+  /* ───────── LOCALIZAÇÃO ───────── */
+  .loc__grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: center; }
+  .loc__media { position: relative; }
+  .loc__media :global(img) { width: 100%; height: clamp(380px, 50vw, 620px); object-fit: cover; }
+  .loc__badge {
+    position: absolute; left: 0; bottom: 1.5rem;
+    background: var(--bordo); color: var(--cream);
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    padding: 0.7rem 1.25rem;
+  }
+  .loc__body .kicker { margin-top: 0.6rem; }
+  .loc__body .h2 { margin-top: 0.8rem; }
+  .loc__stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line-ink);
+  }
+  .loc__stats strong { display: block; font-size: clamp(1.8rem, 1.2rem + 2vw, 2.8rem); font-weight: 300; color: var(--gold-deep); letter-spacing: -0.02em; }
+  .loc__stats span { font-size: 0.82rem; color: var(--stone-deep); line-height: 1.4; display: block; margin-top: 0.3rem; }
+
+  /* ───────── GALERIA ───────── */
+  .gal__track {
+    display: flex; gap: 1.25rem;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-inline: clamp(1.25rem, 0.5rem + 4vw, 4.5rem);
+    padding-bottom: 1.25rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin; scrollbar-color: var(--gold) transparent;
+  }
+  .gal__track::-webkit-scrollbar { height: 3px; }
+  .gal__track::-webkit-scrollbar-thumb { background: var(--gold); }
+  .gal__item { flex: 0 0 min(78vw, 520px); scroll-snap-align: center; position: relative; }
+  .gal__item :global(img) { width: 100%; height: clamp(300px, 40vw, 420px); object-fit: cover; }
+  .gal__item figcaption {
+    margin-top: 0.85rem; font-size: 0.78rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--stone);
+  }
+  .gal__item figcaption::before { content: "— "; color: var(--gold); }
+
+  /* ───────── PARA QUEM É ───────── */
+  .who__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-cream-soft); border: 1px solid var(--line-cream-soft); }
+  .who__card {
+    background: var(--black); padding: clamp(1.5rem, 2.5vw, 2.5rem);
+    display: flex; flex-direction: column; gap: 0.75rem;
+    transition: background var(--t-med) var(--ease);
+  }
+  .who__card:hover { background: var(--bordo-deep); }
+  .who__num { font-size: 0.78rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; }
+  .who__t { font-size: 1.4rem; font-weight: 400; }
+  .who__card p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
+
+  /* ───────── CTA FINAL ───────── */
+  .cta-final { position: relative; padding-block: clamp(5rem, 4rem + 8vw, 9rem); overflow: hidden; isolation: isolate; text-align: center; }
+  .cta-final__media { position: absolute; inset: 0; z-index: -2; }
+  .cta-final__media :global(img) { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8); }
+  .cta-final__veil {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(42,10,7,0.88), rgba(14,6,6,0.9));
+  }
+  .cta-final__inner { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 760px; }
+  .cta-final .display { line-height: 1.02; }
+  .cta-final .lead { color: var(--stone); max-width: 46ch; }
+  .cta-final__btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 0.75rem; }
+
+  /* ───────── RESPONSIVE ───────── */
+  @media (max-width: 880px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .loc__grid { grid-template-columns: 1fr; }
+    .loc__media { order: -1; }
+    .who__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .who__grid { grid-template-columns: 1fr; }
+    .loc__stats { grid-template-columns: 1fr; gap: 1.25rem; text-align: left; }
+  }
+</style>

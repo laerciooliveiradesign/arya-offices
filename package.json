@@ -1,15 +1,19 @@
 {
   "name": "arya-offices",
-  "version": "1.0.0",
-  "description": "Página de pré-lançamento do empreendimento **Arya Offices**, no Polo Tecnológico Sul de Uberlândia/MG.",
-  "main": "script.js",
+  "version": "2.0.0",
+  "description": "Site institucional do empreendimento Arya Offices — Polo Tecnológico Sul, Uberlândia/MG.",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "og": "node scripts/generate-og-image.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "dependencies": {
+    "astro": "^5.0.0"
+  },
   "devDependencies": {
     "sharp": "^0.34.5"
   }

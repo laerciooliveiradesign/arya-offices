@@ -16,9 +16,9 @@ const root = resolve(__dirname, '..');
 const W = 1200;
 const H = 630;
 
-const fachadaPath = resolve(root, 'assets/fotos/FachadaAryaNoite.jpg');
-const logoSvgPath = resolve(root, 'assets/logo-light.svg');
-const outPath = resolve(root, 'assets/og-image.jpg');
+const fachadaPath = resolve(root, 'public/assets/fotos/FachadaAryaNoite.jpg');
+const logoSvgPath = resolve(root, 'public/assets/logo-light.svg');
+const outPath = resolve(root, 'public/assets/og-image.jpg');
 
 console.log('Reading sources...');
 const logoSvg = await readFile(logoSvgPath, 'utf-8');

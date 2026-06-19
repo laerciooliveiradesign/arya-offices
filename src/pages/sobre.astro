@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Picture from '../components/Picture.astro';
+
+const features = [
+  { t: 'Infraestrutura completa', d: 'Energia, climatização, internet redundante e segurança 24h prontas para operações críticas.' },
+  { t: 'Localização estratégica', d: 'No Polo Tecnológico Sul, cercado por empresas de base tecnológica e fácil acesso viário.' },
+  { t: 'Flexibilidade real', d: 'Da sala individual ao pavimento inteiro — o espaço acompanha o ritmo do seu crescimento.' },
+  { t: 'Design que inspira', d: 'Arquitetura contemporânea, áreas de convivência e um rooftop que muda o ritmo do dia.' },
+];
+---
+<BaseLayout
+  title="Sobre o Arya Offices — Polo Tecnológico Sul, Uberlândia"
+  description="Conheça o Arya Offices: um endereço corporativo de alto padrão criado para empresas de tecnologia no Polo Tecnológico Sul de Uberlândia."
+  path="/sobre"
+>
+  <Header active="sobre" />
+
+  <main id="main">
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="page-hero__media"><Picture name="Enscape_2025-07-25-17-55-22" alt="Fachada do edifício Arya Offices" eager width={1920} height={1080} /></div>
+      <div class="page-hero__veil"></div>
+      <div class="container page-hero__inner">
+        <span class="kicker">Sobre o Arya</span>
+        <h1 class="h1">Um endereço pensado<br />para quem constrói o futuro.</h1>
+        <nav class="breadcrumb" aria-label="Trilha"><a href="/home">Início</a> / <span>Sobre</span></nav>
+      </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section class="section section--light">
+      <div class="container">
+        <div class="about-intro">
+          <div class="about-intro__head" data-reveal>
+            <span class="sec-num">01</span>
+            <span class="kicker">O conceito</span>
+          </div>
+          <div class="about-intro__body prose" data-reveal style="--reveal-delay:.1s">
+            <p class="lead">
+              O Arya Offices nasce para receber as empresas que estão redesenhando o jeito de
+              trabalhar — num ambiente onde tecnologia, arquitetura e convivência se encontram.
+            </p>
+            <p>
+              Localizado no <strong>Polo Tecnológico Sul de Uberlândia</strong>, o primeiro
+              loteamento empresarial público da cidade, o edifício foi projetado para oferecer
+              espaços flexíveis que atendem desde startups em expansão até empresas consolidadas
+              e filiais que chegam à região.
+            </p>
+            <p>
+              Mais do que metros quadrados, entregamos um endereço: infraestrutura de ponta,
+              vizinhança qualificada e uma experiência de trabalho à altura das empresas que
+              constroem o amanhã.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial split -->
+    <section class="section section--dark">
+      <div class="container about-split">
+        <div class="about-split__media" data-reveal>
+          <Picture name="Enscape_2025-07-25-18-22-27" alt="Ambiente interno do Arya Offices" width={1100} height={1320} />
+        </div>
+        <div class="about-split__text" data-reveal style="--reveal-delay:.1s">
+          <span class="sec-num">02</span>
+          <span class="kicker">A experiência</span>
+          <h2 class="h2 mt-2">Onde a rotina<br />ganha movimento.</h2>
+          <p class="mt-3">
+            Cada andar foi desenhado para equilibrar foco e conexão: salas reservadas para
+            o trabalho que exige concentração, áreas comuns que aproximam pessoas e um
+            rooftop que convida a pausar e respirar.
+          </p>
+          <p class="mt-2">
+            É a estrutura de um grande edifício corporativo com a alma de um espaço que
+            entende como as empresas de tecnologia realmente funcionam.
+          </p>
+          <a class="btn btn--outline-gold mt-4" href="/locacoes">Ver modelos de locação</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="section section--bordo">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <span class="sec-num">03</span>
+          <span class="kicker">Diferenciais</span>
+          <h2 class="h2">O que faz do Arya<br />um endereço diferente.</h2>
+        </header>
+        <div class="feat-grid">
+          {features.map((f, i) => (
+            <article class="feat" data-reveal style={`--reveal-delay:${i * 0.07}s`}>
+              <div class="macron feat__rule" aria-hidden="true"><span class="macron__dot"></span></div>
+              <h3 class="feat__t">{f.t}</h3>
+              <p>{f.d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--light about-cta">
+      <div class="container container--text" data-reveal style="text-align:center">
+        <span class="kicker kicker--center">Vamos conversar</span>
+        <h2 class="h2 mt-2">Conheça o Arya de perto.</h2>
+        <p class="lead mt-2" style="margin-inline:auto;max-width:48ch">
+          Agende uma visita guiada e veja como o espaço pode acompanhar o momento da sua empresa.
+        </p>
+        <a class="btn btn--on-light btn--lg mt-4" href="/contato">Agendar uma visita</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-intro { display: grid; grid-template-columns: 0.4fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
+  .about-intro__head { display: flex; flex-direction: column; gap: 0.8rem; }
+
+  .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .about-split__media :global(img) { width: 100%; height: clamp(420px, 50vw, 640px); object-fit: cover; }
+  .about-split__text .kicker { margin-top: 0.5rem; }
+
+  .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem) clamp(2rem, 5vw, 5rem); }
+  .feat__rule { margin-bottom: 1.25rem; }
+  .feat__t { font-size: 1.35rem; font-weight: 400; color: var(--gold-soft); }
+  .feat p { margin-top: 0.6rem; color: var(--stone); max-width: 42ch; }
+
+  @media (max-width: 880px) {
+    .about-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .about-split { grid-template-columns: 1fr; }
+    .about-split__media { order: -1; }
+    .feat-grid { grid-template-columns: 1fr; }
+  }
+</style>

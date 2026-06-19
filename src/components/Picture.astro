@@ -1,0 +1,48 @@
+---
+/**
+ * <Picture> — renderiza <picture> com fonte WebP + fallback JPG.
+ * Assume que existe /assets/fotos/{name}.webp e /assets/fotos/{name}.jpg
+ *
+ * Props:
+ *   name      — slug do arquivo sem extensão (ex: "FachadaAryaNoite")
+ *   alt       — texto alternativo (obrigatório p/ acessibilidade)
+ *   eager     — true = carrega imediatamente (hero); default lazy
+ *   sizes     — atributo sizes opcional
+ *   className — classe extra no <img>
+ *   width/height — dimensões intrínsecas (evita layout shift)
+ */
+interface Props {
+  name: string;
+  alt: string;
+  eager?: boolean;
+  sizes?: string;
+  className?: string;
+  width?: number;
+  height?: number;
+}
+const {
+  name,
+  alt,
+  eager = false,
+  sizes,
+  className,
+  width = 1600,
+  height = 1066,
+} = Astro.props;
+
+const base = `/assets/fotos/${name}`;
+---
+<picture>
+  <source srcset={`${base}.webp`} type="image/webp" />
+  <img
+    src={`${base}.jpg`}
+    alt={alt}
+    width={width}
+    height={height}
+    class={className}
+    sizes={sizes}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding={eager ? 'sync' : 'async'}
+    fetchpriority={eager ? 'high' : 'auto'}
+  />
+</picture>
