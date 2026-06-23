@@ -268,13 +268,14 @@ em { font-style: italic; }
   border-radius: var(--btn-shape);
   position: relative;
   overflow: hidden;
+  isolation: isolate;
   transition: color var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
 }
-/* Conteúdo sempre acima do preenchimento de hover */
-.btn > * { position: relative; z-index: 1; }
+/* Preenchimento de hover atrás do texto (z-index:-1 dentro do contexto isolado):
+   fica acima do fundo do botão mas ABAIXO do texto — o texto nunca some. */
 .btn::before {
   content: "";
-  position: absolute; inset: 0; z-index: 0;
+  position: absolute; inset: 0; z-index: -1;
   background: var(--btn-hover-bg);
   transform: translateY(102%);
   transition: transform var(--t-med) var(--ease);

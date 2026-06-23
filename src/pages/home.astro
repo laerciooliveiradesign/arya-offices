@@ -176,7 +176,10 @@ const personas = [
         <div class="who__grid">
           {personas.map((p, i) => (
             <article class="who__card" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
-              <span class="who__num">{p.n}</span>
+              <div class="who__top">
+                <span class="who__num">{p.n}</span>
+                <span class="who__rule" aria-hidden="true"></span>
+              </div>
               <h3 class="who__t">{p.t}</h3>
               <p>{p.d}</p>
             </article>
@@ -365,36 +368,26 @@ const personas = [
   /* ───────── PARA QUEM É ───────── */
   .who__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 1.6vw, 1.75rem); }
   .who__card {
-    position: relative;
-    padding: clamp(2.2rem, 2.6vw, 2.8rem) clamp(1.4rem, 1.8vw, 2rem) clamp(1.6rem, 2vw, 2.2rem);
-    border: 1px solid var(--line-cream-soft);
+    padding: clamp(2rem, 2.4vw, 2.6rem) clamp(1.4rem, 1.8vw, 2rem) clamp(1.6rem, 2vw, 2.2rem);
+    border: 1px solid var(--line-gold-soft);
     border-radius: var(--shape-soft);
-    display: flex; flex-direction: column; gap: 0.7rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
     transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
-  }
-  /* bracket de canto dourado (L aberto) — grafismo da marca */
-  .who__card::before {
-    content: "";
-    position: absolute; top: 14px; left: 14px;
-    width: 24px; height: 24px;
-    border-top: 1px solid var(--gold); border-left: 1px solid var(--gold);
-    border-top-left-radius: var(--r);
-    opacity: 0.65;
-    transition: opacity var(--t-med) var(--ease), width var(--t-med) var(--ease), height var(--t-med) var(--ease);
-    pointer-events: none;
   }
   .who__card:hover {
     border-color: var(--line-gold);
-    transform: translateY(-5px);
-    background: linear-gradient(160deg, rgba(80,21,15,0.25), transparent 70%);
+    transform: translateY(-4px);
+    background: linear-gradient(160deg, rgba(80,21,15,0.22), transparent 72%);
   }
-  .who__card:hover::before { opacity: 1; width: 32px; height: 32px; }
+  /* topo: número + macron dourado da marca */
+  .who__top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.4rem; }
   .who__num {
     font-size: clamp(1.8rem, 1.2rem + 1.4vw, 2.4rem);
-    font-weight: 200; line-height: 1; color: var(--gold);
-    letter-spacing: 0.02em;
+    font-weight: 200; line-height: 1; color: var(--gold); letter-spacing: 0.02em;
+    flex: none;
   }
-  .who__t { font-size: 1.35rem; font-weight: 500; margin-top: 0.3rem; }
+  .who__rule { height: 1px; flex: 1; background: var(--line-gold); }
+  .who__t { font-size: 1.35rem; font-weight: 500; }
   .who__card p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
 
   /* ───────── CTA FINAL ───────── */
