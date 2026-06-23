@@ -109,13 +109,20 @@ ul, ol { list-style: none; }
 
   --header-h: 88px;
 
-  /* Forma-assinatura da marca: 3 cantos arredondados + 1 canto reto (bracket Arya) */
-  --r:    clamp(14px, 1.4vw, 24px);
+  /* ── Sistema de forma da marca Arya ──
+     Cantos arredondados generosos + assimetria (canto grande na diagonal),
+     com um canto-assinatura reto. Usado como grafismo, não só decoração. */
+  --r:    clamp(14px, 1.4vw, 22px);
+  --r-lg: clamp(30px, 3.2vw, 48px);   /* canto generoso da marca */
   --r-sm: clamp(8px, 0.8vw, 12px);
-  --card-shape:    var(--r) var(--r) var(--r) 0;      /* canto reto: inferior-esquerdo */
-  --card-shape-tl: var(--r) var(--r) var(--r) 0;
-  --card-shape-br: var(--r) 0 var(--r) var(--r);      /* variante: canto reto inferior-direito */
-  --btn-shape: var(--r-sm) var(--r-sm) var(--r-sm) 0;
+
+  /* Foto/card: canto grande TL + BR, canto pequeno TR, canto reto BL (assinatura) */
+  --shape-photo: var(--r-lg) var(--r) var(--r-lg) 0;
+  --shape-soft:  var(--r-lg) var(--r) var(--r-lg) var(--r);
+  --card-shape:  var(--r) var(--r) var(--r) 0;
+  --btn-shape:   var(--r-sm) var(--r-sm) var(--r-sm) 0;
+
+  --frame-offset: clamp(12px, 1.4vw, 18px);
 }
 
 /* --------------------------------------------------------------------------- *
@@ -303,6 +310,69 @@ em { font-style: italic; }
 }
 
 .btn--lg { padding: 1.2rem 2.4rem; font-size: 0.82rem; }
+
+/* --------------------------------------------------------------------------- *
+ *  GRAFISMO DA MARCA — moldura dourada / bracket de composição
+ * --------------------------------------------------------------------------- */
+
+/* Foto/bloco com moldura dourada DESLOCADA atrás (composição em camadas Arya).
+   A foto encosta no canto superior-esquerdo; a hairline dourada "abraça" o
+   conjunto, vazando no canto inferior-direito. */
+.framed { position: relative; isolation: isolate; }
+.framed > picture,
+.framed > img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  border-radius: var(--shape-photo);
+}
+.framed > picture > img { border-radius: var(--shape-photo); }
+.framed::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: var(--frame-offset) calc(-1 * var(--frame-offset)) calc(-1 * var(--frame-offset)) var(--frame-offset);
+  border: 1px solid var(--gold);
+  border-radius: var(--shape-photo);
+  pointer-events: none;
+}
+/* variante: moldura vaza no canto inferior-esquerdo */
+.framed--left::before {
+  inset: var(--frame-offset) var(--frame-offset) calc(-1 * var(--frame-offset)) calc(-1 * var(--frame-offset));
+  border-radius: var(--r) var(--r-lg) 0 var(--r-lg);
+}
+
+/* Bracket de canto: dois traços dourados em L, grafismo decorativo de seção */
+.bracket {
+  position: relative;
+}
+.bracket::before {
+  content: "";
+  position: absolute;
+  width: clamp(38px, 5vw, 64px);
+  height: clamp(38px, 5vw, 64px);
+  border-style: solid;
+  border-color: var(--gold);
+  pointer-events: none;
+  opacity: 0.9;
+}
+.bracket--tl::before { top: 0; left: 0; border-width: 1px 0 0 1px; border-top-left-radius: var(--r); }
+.bracket--tr::before { top: 0; right: 0; border-width: 1px 1px 0 0; border-top-right-radius: var(--r-lg); }
+.bracket--br::before { bottom: 0; right: 0; border-width: 0 1px 1px 0; border-bottom-right-radius: var(--r-lg); }
+
+/* Moldura interna (passe-partout) dourada dentro de cards */
+.inframe { position: relative; }
+.inframe::after {
+  content: "";
+  position: absolute;
+  inset: clamp(10px, 1.2vw, 16px);
+  border: 1px solid var(--line-gold-soft);
+  border-radius: var(--r);
+  pointer-events: none;
+  transition: border-color var(--t-med) var(--ease);
+}
+.inframe:hover::after { border-color: var(--line-gold); }
 
 /* --------------------------------------------------------------------------- *
  *  REVEAL ON SCROLL

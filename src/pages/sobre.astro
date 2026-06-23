@@ -62,7 +62,7 @@ const features = [
     <!-- Editorial split -->
     <section class="section section--dark">
       <div class="container about-split">
-        <div class="about-split__media" data-reveal>
+        <div class="about-split__media framed" data-reveal>
           <Picture name="Enscape_2025-07-25-18-22-27" alt="Ambiente interno do Arya Offices" width={1100} height={1320} />
         </div>
         <div class="about-split__text" data-reveal style="--reveal-delay:.1s">
@@ -124,7 +124,6 @@ const features = [
   .about-intro__head { display: flex; flex-direction: column; gap: 0.8rem; }
 
   .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-  .about-split__media { border-radius: var(--card-shape); overflow: hidden; }
   .about-split__media :global(img) { width: 100%; height: clamp(420px, 50vw, 640px); object-fit: cover; display: block; }
   .about-split__text .kicker { margin-top: 0.5rem; }
 

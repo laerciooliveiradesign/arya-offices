@@ -73,35 +73,25 @@ const personas = [
         </header>
 
         <div class="concept-grid">
-          <article class="concept-card" data-reveal>
+          <article class="concept-card inframe" data-reveal>
             <span class="concept-card__idx">Plug &amp; Play</span>
             <h3 class="h3">Entre e <em>opere</em>.</h3>
             <p>
-              Salas mobiliadas, conectadas e prontas para receber seu time no primeiro dia.
-              Sem obra, sem espera — apenas trabalho.
+              Salas prontas para uso, no modelo por posição. Ideal para startups e
+              empresas que querem começar rápido, sem se preocupar com infraestrutura.
             </p>
-            <ul class="ticks">
-              <li>Mobília corporativa instalada</li>
-              <li>Internet redundante de alta capacidade</li>
-              <li>Recepção, segurança e limpeza inclusas</li>
-              <li>Salas de reunião compartilhadas</li>
-            </ul>
+            <span class="concept-card__pav">Pavimentos 1 e 2</span>
             <a class="concept-card__link" href="/locacoes">Ver o modelo Plug &amp; Play →</a>
           </article>
 
-          <article class="concept-card concept-card--accent" data-reveal style="--reveal-delay:.12s">
+          <article class="concept-card concept-card--accent inframe" data-reveal style="--reveal-delay:.12s">
             <span class="concept-card__idx">Por m²</span>
             <h3 class="h3">Construa do seu <em>jeito</em>.</h3>
             <p>
-              Metragem flexível e pavimentos de 1 a 5 para personalizar a planta de
-              acordo com a identidade e a escala da sua operação.
+              Locação tradicional de lajes corporativas. Espaços sem acabamento, para
+              que cada empresa personalize de acordo com sua cultura e necessidades.
             </p>
-            <ul class="ticks">
-              <li>Pavimentos de 1 a 5 disponíveis</li>
-              <li>Layout e marca sob medida</li>
-              <li>Infraestrutura compartilhada premium</li>
-              <li>Contratos flexíveis de longa duração</li>
-            </ul>
+            <span class="concept-card__pav">Pavimentos 3, 4 e 5</span>
             <a class="concept-card__link" href="/locacoes">Ver o modelo por m² →</a>
           </article>
         </div>
@@ -111,9 +101,9 @@ const personas = [
     <!-- ░░ LOCALIZAÇÃO ░░ -->
     <section class="section section--light loc" id="localizacao">
       <div class="container loc__grid">
-        <div class="loc__media" data-reveal>
+        <div class="loc__media framed" data-reveal>
           <Picture name="Enscape_2025-07-25-18-01-37" alt="Entrada do edifício Arya Offices" width={1200} height={1500} />
-          <span class="loc__badge">Bairro Gávea · Uberlândia</span>
+          <span class="loc__badge">Polo Tecnológico Sul · Uberlândia</span>
         </div>
 
         <div class="loc__body" data-reveal style="--reveal-delay:.1s">
@@ -260,11 +250,20 @@ const personas = [
   .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.25rem, 2vw, 2rem); }
   .concept-card {
     border: 1px solid var(--line-gold-soft);
-    border-radius: var(--card-shape);
+    border-radius: var(--shape-soft);
     background: linear-gradient(160deg, rgba(80,21,15,0.28), rgba(26,10,7,0.1));
-    padding: clamp(1.75rem, 3vw, 3rem);
+    padding: clamp(2rem, 3.4vw, 3.4rem);
     display: flex; flex-direction: column;
     transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+  }
+  .concept-card__pav {
+    margin-top: 1.5rem;
+    align-self: flex-start;
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--line-gold);
+    border-radius: var(--btn-shape);
+    padding: 0.5rem 0.9rem;
   }
   .concept-card:hover { border-color: var(--line-gold); transform: translateY(-4px); }
   .concept-card--accent { background: linear-gradient(160deg, rgba(80,21,15,0.5), rgba(26,10,7,0.15)); }
@@ -293,10 +292,9 @@ const personas = [
 
   /* ───────── LOCALIZAÇÃO ───────── */
   .loc__grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: center; }
-  .loc__media { position: relative; border-radius: var(--card-shape); overflow: hidden; }
   .loc__media :global(img) { width: 100%; height: clamp(380px, 50vw, 620px); object-fit: cover; }
   .loc__badge {
-    position: absolute; left: 0; bottom: 1.5rem;
+    position: absolute; left: 0; bottom: 1.5rem; z-index: 2;
     background: var(--bordo); color: var(--cream);
     font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
     padding: 0.7rem 1.25rem;
@@ -323,7 +321,7 @@ const personas = [
   .gal__track::-webkit-scrollbar { height: 3px; }
   .gal__track::-webkit-scrollbar-thumb { background: var(--gold); }
   .gal__item { flex: 0 0 min(78vw, 520px); scroll-snap-align: center; position: relative; }
-  .gal__item :global(img) { width: 100%; height: clamp(300px, 40vw, 420px); object-fit: cover; border-radius: var(--card-shape); }
+  .gal__item :global(img) { width: 100%; height: clamp(300px, 40vw, 420px); object-fit: cover; border-radius: var(--shape-photo); }
   .gal__item figcaption {
     margin-top: 0.85rem; font-size: 0.78rem; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--stone);

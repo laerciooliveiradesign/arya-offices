@@ -8,12 +8,11 @@ const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_n
 
 const plugPlay = {
   inclusos: [
-    'Mobília corporativa instalada',
-    'Internet redundante de alta capacidade',
-    'Recepção, segurança e limpeza inclusas',
-    'Salas de reunião compartilhadas',
-    'Climatização e energia prontas',
-    'Áreas de convivência e rooftop',
+    'Salas prontas para uso',
+    'Modelo por posição',
+    'Ideal para startups',
+    'Sem preocupação com infraestrutura',
+    'Disponível nos pavimentos 1 e 2',
   ],
   fotos: [
     { name: 'interior-01', label: 'Estações de trabalho' },
@@ -24,12 +23,11 @@ const plugPlay = {
 
 const porM2 = {
   inclusos: [
-    'Pavimentos de 1 a 5 disponíveis',
-    'Layout e planta sob medida',
-    'Personalização de marca e ambientes',
-    'Infraestrutura compartilhada premium',
-    'Contratos flexíveis de longa duração',
-    'Escalabilidade conforme o crescimento',
+    'Lajes corporativas tradicionais',
+    'Espaços sem acabamento',
+    'Personalização total do ambiente',
+    'De acordo com a cultura da empresa',
+    'Disponível nos pavimentos 3, 4 e 5',
   ],
   fotos: [
     { name: 'Enscape_2025-07-25-18-19-59', label: 'Lobby corporativo' },
@@ -66,8 +64,8 @@ const porM2 = {
             <h2 class="h2 mt-2">Plug &amp; Play</h2>
           </div>
           <p class="model__lead lead">
-            Salas mobiliadas, conectadas e operacionais desde o primeiro dia.
-            Para times que precisam funcionar antes de mobiliar.
+            Salas prontas para uso, no modelo por posição. Ideal para startups e
+            empresas que querem começar rápido, sem se preocupar com infraestrutura.
           </p>
         </header>
 
@@ -79,7 +77,7 @@ const porM2 = {
 
         <div class="model__gal" data-reveal>
           {plugPlay.fotos.map((f) => (
-            <figure class="model__shot">
+            <figure class="model__shot framed">
               <Picture name={f.name} alt={f.label} width={900} height={640} />
               <figcaption>{f.label}</figcaption>
             </figure>
@@ -100,8 +98,8 @@ const porM2 = {
             <h2 class="h2 mt-2">Por m²</h2>
           </div>
           <p class="model__lead lead">
-            Metragem flexível e pavimentos de 1 a 5 para personalizar a planta
-            de acordo com a identidade e a escala da sua operação.
+            Locação tradicional de lajes corporativas. Espaços sem acabamento, para
+            que cada empresa personalize de acordo com sua cultura e necessidades.
           </p>
         </header>
 
@@ -113,7 +111,7 @@ const porM2 = {
 
         <div class="model__gal" data-reveal>
           {porM2.fotos.map((f) => (
-            <figure class="model__shot">
+            <figure class="model__shot framed">
               <Picture name={f.name} alt={f.label} width={900} height={640} />
               <figcaption>{f.label}</figcaption>
             </figure>
@@ -121,6 +119,30 @@ const porM2 = {
         </div>
 
         <a class="btn btn--outline-gold" href="/contato">Quero o modelo por m²</a>
+      </div>
+    </section>
+
+    <!-- PAVIMENTOS + FLEXIBILIDADE -->
+    <section class="section section--dark pav">
+      <div class="container pav__grid">
+        <div class="pav__block bracket bracket--tr" data-reveal>
+          <span class="sec-num">03</span>
+          <span class="kicker">Pavimentos 1 a 5</span>
+          <h2 class="h3 mt-2">A distribuição<br />do edifício.</h2>
+          <ul class="pav__list mt-3">
+            <li><strong>Pavimentos 1 e 2</strong><span>modelo plug &amp; play</span></li>
+            <li><strong>Pavimentos 3, 4 e 5</strong><span>locação por m²</span></li>
+          </ul>
+        </div>
+        <div class="pav__block" data-reveal style="--reveal-delay:.1s">
+          <span class="sec-num">04</span>
+          <span class="kicker">Flexibilidade</span>
+          <h2 class="h3 mt-2">Espaços que<br />acompanham você.</h2>
+          <p class="mt-3">
+            Modelos que acompanham a evolução da empresa. Facilidade para migrar de
+            espaços conforme o time cresce, sem burocracia excessiva.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -136,11 +158,11 @@ const porM2 = {
           <div class="compare__row compare__row--head">
             <span></span><span>Plug &amp; Play</span><span>Por m²</span>
           </div>
-          <div class="compare__row"><span>Pronto para operar</span><span class="yes">Imediato</span><span>Após adequação</span></div>
-          <div class="compare__row"><span>Mobília</span><span class="yes">Inclusa</span><span>Sob medida</span></div>
+          <div class="compare__row"><span>Modelo</span><span class="yes">Por posição</span><span>Laje corporativa</span></div>
+          <div class="compare__row"><span>Acabamento</span><span class="yes">Pronto para uso</span><span>Sem acabamento</span></div>
           <div class="compare__row"><span>Personalização</span><span>Padrão</span><span class="yes">Total</span></div>
-          <div class="compare__row"><span>Escala</span><span>Salas</span><span class="yes">Até 5 pavimentos</span></div>
-          <div class="compare__row"><span>Ideal para</span><span>Startups / times enxutos</span><span>Empresas consolidadas</span></div>
+          <div class="compare__row"><span>Pavimentos</span><span class="yes">1 e 2</span><span>3, 4 e 5</span></div>
+          <div class="compare__row"><span>Ideal para</span><span>Startups / começar rápido</span><span>Empresas que querem personalizar</span></div>
         </div>
 
         <div style="text-align:center" class="mt-5" data-reveal>
@@ -170,7 +192,9 @@ const porM2 = {
   .incluso__mark { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
 
   .model__gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
-  .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; border-radius: var(--card-shape); }
+  .model__shot { margin-bottom: var(--frame-offset); }
+  .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; }
+  .model__shot figcaption { position: relative; z-index: 1; }
   .model__shot figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
   .model__shot figcaption::before { content: "— "; color: var(--gold); }
 
@@ -184,6 +208,23 @@ const porM2 = {
   .compare__row--head > span { background: var(--bordo); color: var(--cream); font-weight: 600; letter-spacing: 0.04em; }
   .compare__row--head > span:first-child { color: var(--cream); }
   .compare .yes { color: var(--gold-deep); font-weight: 600; }
+
+  /* Pavimentos + Flexibilidade */
+  .pav__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
+  .pav__block { padding-top: clamp(1rem, 2vw, 2rem); }
+  .pav__block .kicker { margin-top: 0.5rem; }
+  .pav__list { display: flex; flex-direction: column; gap: 1rem; }
+  .pav__list li {
+    display: flex; flex-direction: column; gap: 0.2rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--line-gold-soft);
+    border-radius: var(--card-shape);
+  }
+  .pav__list strong { color: var(--gold); font-weight: 600; letter-spacing: 0.02em; }
+  .pav__list span { font-size: 0.92rem; color: var(--stone); text-transform: lowercase; }
+  .pav__block p { color: var(--stone); max-width: 40ch; }
+
+  @media (max-width: 880px) { .pav__grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 
   @media (max-width: 880px) {
     .model__head { grid-template-columns: 1fr; align-items: start; }
