@@ -37,7 +37,7 @@ const porM2 = {
 };
 ---
 <BaseLayout
-  title="Locações — Arya Offices | Plug & Play ou por m²"
+  title="Locações · Arya Offices | Plug & Play ou por m²"
   description="Dois modelos de locação no Arya Offices: Plug & Play (pronto para operar) ou por m² (personalizável). Escritórios para empresas de tecnologia em Uberlândia."
   path="/locacoes"
 >
@@ -196,7 +196,8 @@ const porM2 = {
   .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; }
   .model__shot figcaption { position: relative; z-index: 1; }
   .model__shot figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
-  .model__shot figcaption::before { content: "— "; color: var(--gold); }
+  .model__shot figcaption { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .model__shot figcaption::before { content: ""; width: 18px; height: 1px; background: var(--gold); flex: none; }
 
   /* Comparativo */
   .compare { border: 1px solid var(--line-ink); border-radius: var(--card-shape); overflow: hidden; }

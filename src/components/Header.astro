@@ -15,7 +15,7 @@ const links = [
 ---
 <header class="hdr" data-header>
   <div class="hdr__inner container">
-    <a class="hdr__logo" href="/home" aria-label="Arya Offices — início">
+    <a class="hdr__logo" href="/home" aria-label="Arya Offices, início">
       <img src="/assets/logo-light.svg" alt="Arya Offices" width="190" height="64" />
     </a>
 
@@ -187,21 +187,21 @@ const links = [
   .mnav__link {
     display: flex;
     align-items: baseline;
-    gap: 1rem;
-    font-size: clamp(2rem, 11vw, 3rem);
-    font-weight: 300;
-    letter-spacing: -0.02em;
+    gap: 0.9rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--cream);
-    padding-block: 0.5rem;
+    padding-block: 0.9rem;
     border-bottom: 1px solid var(--line-cream-soft);
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
     transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), color var(--t-fast) var(--ease);
     transition-delay: calc(var(--i) * 0.06s + 0.1s);
   }
   body.menu-open .mnav__link { opacity: 1; transform: none; }
   .mnav__link:hover, .mnav__link.is-active { color: var(--gold); }
-  .mnav__num { font-size: 0.8rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; }
+  .mnav__num { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; }
 
   .mnav__wa { position: relative; align-self: flex-start; }
   .mnav__foot {

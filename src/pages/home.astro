@@ -23,7 +23,7 @@ const personas = [
 ];
 ---
 <BaseLayout
-  title="Arya Offices — Escritórios para empresas de tecnologia em Uberlândia"
+  title="Arya Offices · Escritórios para empresas de tecnologia em Uberlândia"
   description="No Polo Tecnológico Sul de Uberlândia, o Arya Offices oferece locação plug & play ou por m² para empresas de tecnologia. Flexibilidade, infraestrutura e conexão."
   path="/home"
 >
@@ -41,12 +41,12 @@ const personas = [
       <div class="container hero__inner">
         <p class="kicker" data-reveal>Polo Tecnológico Sul · Uberlândia · MG</p>
         <h1 class="hero__title" data-reveal style="--reveal-delay:.08s">
-          Onde empresas de tecnologia<br />
+          Onde empresas de tecnologia<br class="br-d" />
           encontram <strong>flexibilidade</strong> e <strong>conexão.</strong>
         </h1>
         <p class="hero__sub lead" data-reveal style="--reveal-delay:.18s">
-          Escritórios de alto padrão para locar prontos para operar ou
-          personalizar por metro quadrado — no maior polo de tecnologia de Minas Gerais.
+          Escritórios de alto padrão para operar prontos ou personalizar
+          por metro quadrado, no maior polo de tecnologia de Minas Gerais.
         </p>
         <div class="hero__cta" data-reveal style="--reveal-delay:.28s">
           <a class="btn" href="/contato">
@@ -126,7 +126,7 @@ const personas = [
           <h2 class="h2">No centro da inovação<br />de Uberlândia.</h2>
           <div class="prose mt-3">
             <p class="lead">
-              O Arya Offices nasce dentro do <strong>Polo Tecnológico Sul</strong> — o primeiro
+              O Arya Offices nasce dentro do <strong>Polo Tecnológico Sul</strong>, o primeiro
               loteamento empresarial público da cidade, dedicado a empresas de base tecnológica.
             </p>
             <p>
@@ -193,7 +193,7 @@ const personas = [
       <div class="cta-final__veil" aria-hidden="true"></div>
       <div class="container cta-final__inner" data-reveal>
         <span class="kicker kicker--center kicker--light">O próximo passo</span>
-        <h2 class="cta-final__title">Reserve o seu<br />espaço no Arya.</h2>
+        <h2 class="cta-final__title">Reserve o seu espaço no Arya.</h2>
         <p class="lead">
           Agende uma visita guiada ao edifício e descubra o modelo de locação ideal
           para o momento da sua empresa.
@@ -243,7 +243,8 @@ const personas = [
     margin-top: 1.5rem;
   }
   .hero__title strong { font-weight: 600; color: var(--gold); }
-  .hero__sub { margin-top: 1.75rem; max-width: 52ch; color: var(--stone); }
+  .hero__sub { margin-top: 1.75rem; max-width: 60ch; color: var(--stone); text-wrap: balance; }
+  .br-d { display: inline; }
   .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
 
   .hero__scroll {
@@ -358,18 +359,42 @@ const personas = [
     margin-top: 0.85rem; font-size: 0.78rem; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--stone);
   }
-  .gal__item figcaption::before { content: "— "; color: var(--gold); }
+  .gal__item figcaption { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .gal__item figcaption::before { content: ""; width: 18px; height: 1px; background: var(--gold); flex: none; }
 
   /* ───────── PARA QUEM É ───────── */
-  .who__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-cream-soft); border: 1px solid var(--line-cream-soft); }
+  .who__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 1.6vw, 1.75rem); }
   .who__card {
-    background: var(--black); padding: clamp(1.5rem, 2.5vw, 2.5rem);
-    display: flex; flex-direction: column; gap: 0.75rem;
-    transition: background var(--t-med) var(--ease);
+    position: relative;
+    padding: clamp(2.2rem, 2.6vw, 2.8rem) clamp(1.4rem, 1.8vw, 2rem) clamp(1.6rem, 2vw, 2.2rem);
+    border: 1px solid var(--line-cream-soft);
+    border-radius: var(--shape-soft);
+    display: flex; flex-direction: column; gap: 0.7rem;
+    transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
   }
-  .who__card:hover { background: var(--bordo-deep); }
-  .who__num { font-size: 0.78rem; letter-spacing: 0.2em; color: var(--gold); font-weight: 500; }
-  .who__t { font-size: 1.4rem; font-weight: 400; }
+  /* bracket de canto dourado (L aberto) — grafismo da marca */
+  .who__card::before {
+    content: "";
+    position: absolute; top: 14px; left: 14px;
+    width: 24px; height: 24px;
+    border-top: 1px solid var(--gold); border-left: 1px solid var(--gold);
+    border-top-left-radius: var(--r);
+    opacity: 0.65;
+    transition: opacity var(--t-med) var(--ease), width var(--t-med) var(--ease), height var(--t-med) var(--ease);
+    pointer-events: none;
+  }
+  .who__card:hover {
+    border-color: var(--line-gold);
+    transform: translateY(-5px);
+    background: linear-gradient(160deg, rgba(80,21,15,0.25), transparent 70%);
+  }
+  .who__card:hover::before { opacity: 1; width: 32px; height: 32px; }
+  .who__num {
+    font-size: clamp(1.8rem, 1.2rem + 1.4vw, 2.4rem);
+    font-weight: 200; line-height: 1; color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .who__t { font-size: 1.35rem; font-weight: 500; margin-top: 0.3rem; }
   .who__card p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
 
   /* ───────── CTA FINAL ───────── */
@@ -397,8 +422,33 @@ const personas = [
     .loc__media { order: -1; }
     .who__grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* Mobile: hero limpo, sem quebras forçadas, espaçamento profissional */
+  @media (max-width: 640px) {
+    .hero { padding-top: var(--header-h); }
+    .hero__inner { padding-block: clamp(2rem, 12vh, 4rem); }
+    .br-d { display: none; }
+    .hero__title {
+      font-size: clamp(2.1rem, 1.2rem + 5vw, 2.9rem);
+      line-height: 1.14;
+      text-wrap: balance;
+      margin-top: 1.1rem;
+    }
+    .hero__sub {
+      font-size: 1rem;
+      margin-top: 1.4rem;
+      max-width: 42ch;
+      text-wrap: balance;
+    }
+    .hero__cta { gap: 0.75rem; margin-top: 2rem; }
+    .hero__cta .btn { flex: 1 1 auto; min-width: 0; }
+    .sec-head { margin-bottom: 2rem; }
+    .concept-card__body { margin-inline: 0; }
+  }
   @media (max-width: 520px) {
     .who__grid { grid-template-columns: 1fr; }
     .loc__stats { grid-template-columns: 1fr; gap: 1.25rem; text-align: left; }
+    .hero__cta { flex-direction: column; align-items: stretch; }
+    .hero__cta .btn { width: 100%; }
   }
 </style>
