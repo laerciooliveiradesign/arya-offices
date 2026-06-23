@@ -90,8 +90,12 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
             <a class="info-link" href="https://www.instagram.com/aryaoffices/" target="_blank" rel="noopener noreferrer">@aryaoffices</a>
           </div>
           <div class="info-block">
+            <span class="info-label">LinkedIn</span>
+            <a class="info-link" href="https://www.linkedin.com/company/arya-offices/" target="_blank" rel="noopener noreferrer">Arya Offices</a>
+          </div>
+          <div class="info-block">
             <span class="info-label">Endereço</span>
-            <address class="info-addr">Polo Tecnológico Sul · Bairro Gávea<br />Uberlândia · MG · Brasil</address>
+            <address class="info-addr">Polo Tecnológico Sul<br />Uberlândia · MG · Brasil</address>
           </div>
 
           <a class="btn btn--ghost wa-big" href={wa} target="_blank" rel="noopener noreferrer">
@@ -168,7 +172,7 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
   .info-addr { font-style: normal; font-size: 1.05rem; font-weight: 300; line-height: 1.6; color: var(--stone); }
   .wa-big { align-self: flex-start; }
 
-  .map { margin-top: 0.5rem; border: 1px solid var(--line-cream-soft); }
+  .map { margin-top: 0.5rem; border: 1px solid var(--line-cream-soft); border-radius: var(--card-shape); overflow: hidden; }
   .map iframe { width: 100%; height: 280px; border: 0; display: block; filter: grayscale(0.3) contrast(1.05); }
 
   @media (max-width: 880px) {

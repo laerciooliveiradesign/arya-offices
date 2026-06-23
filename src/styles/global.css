@@ -107,7 +107,15 @@ ul, ol { list-style: none; }
   --t-med:    0.5s;
   --t-slow:   0.8s;
 
-  --header-h: 84px;
+  --header-h: 88px;
+
+  /* Forma-assinatura da marca: 3 cantos arredondados + 1 canto reto (bracket Arya) */
+  --r:    clamp(14px, 1.4vw, 24px);
+  --r-sm: clamp(8px, 0.8vw, 12px);
+  --card-shape:    var(--r) var(--r) var(--r) 0;      /* canto reto: inferior-esquerdo */
+  --card-shape-tl: var(--r) var(--r) var(--r) 0;
+  --card-shape-br: var(--r) 0 var(--r) var(--r);      /* variante: canto reto inferior-direito */
+  --btn-shape: var(--r-sm) var(--r-sm) var(--r-sm) 0;
 }
 
 /* --------------------------------------------------------------------------- *
@@ -235,6 +243,8 @@ em { font-style: italic; }
   --btn-fg: var(--ink);
   --btn-bg: var(--gold);
   --btn-hover-bg: var(--cream);
+  --btn-hover-fg: var(--ink);
+  --btn-border: var(--gold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -247,19 +257,22 @@ em { font-style: italic; }
   line-height: 1;
   color: var(--btn-fg);
   background: var(--btn-bg);
-  border: 1px solid var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--btn-shape);
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   transition: color var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
 }
+/* Conteúdo sempre acima do preenchimento de hover */
+.btn > * { position: relative; z-index: 1; }
 .btn::before {
   content: "";
-  position: absolute; inset: 0; z-index: -1;
+  position: absolute; inset: 0; z-index: 0;
   background: var(--btn-hover-bg);
-  transform: translateY(101%);
+  transform: translateY(102%);
   transition: transform var(--t-med) var(--ease);
 }
+.btn:hover { color: var(--btn-hover-fg); }
 .btn:hover::before { transform: translateY(0); }
 .btn svg { transition: transform var(--t-med) var(--ease); }
 .btn:hover svg { transform: translateX(3px); }
@@ -268,25 +281,26 @@ em { font-style: italic; }
   --btn-fg: var(--cream);
   --btn-bg: transparent;
   --btn-hover-bg: var(--cream);
-  border-color: var(--line-cream);
+  --btn-hover-fg: var(--ink);
+  --btn-border: var(--line-cream-strong, rgba(242,235,220,0.4));
 }
-.btn--ghost:hover { color: var(--ink); border-color: var(--cream); }
+.btn--ghost:hover { border-color: var(--cream); }
 
 .btn--outline-gold {
   --btn-fg: var(--gold);
   --btn-bg: transparent;
   --btn-hover-bg: var(--gold);
-  border-color: var(--gold);
+  --btn-hover-fg: var(--ink);
+  --btn-border: var(--gold);
 }
-.btn--outline-gold:hover { color: var(--ink); }
 
 .btn--on-light {
   --btn-fg: var(--ivory);
   --btn-bg: var(--bordo);
   --btn-hover-bg: var(--bordo-warm);
-  border-color: var(--bordo);
+  --btn-hover-fg: var(--ivory);
+  --btn-border: var(--bordo);
 }
-.btn--on-light:hover { color: var(--ivory); }
 
 .btn--lg { padding: 1.2rem 2.4rem; font-size: 0.82rem; }
 

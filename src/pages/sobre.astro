@@ -124,7 +124,8 @@ const features = [
   .about-intro__head { display: flex; flex-direction: column; gap: 0.8rem; }
 
   .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
-  .about-split__media :global(img) { width: 100%; height: clamp(420px, 50vw, 640px); object-fit: cover; }
+  .about-split__media { border-radius: var(--card-shape); overflow: hidden; }
+  .about-split__media :global(img) { width: 100%; height: clamp(420px, 50vw, 640px); object-fit: cover; display: block; }
   .about-split__text .kicker { margin-top: 0.5rem; }
 
   .feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 3vw, 3rem) clamp(2rem, 5vw, 5rem); }

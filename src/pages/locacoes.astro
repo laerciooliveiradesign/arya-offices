@@ -170,12 +170,12 @@ const porM2 = {
   .incluso__mark { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex: none; }
 
   .model__gal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
-  .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; }
+  .model__shot :global(img) { width: 100%; height: clamp(220px, 26vw, 320px); object-fit: cover; border-radius: var(--card-shape); }
   .model__shot figcaption { margin-top: 0.7rem; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); }
   .model__shot figcaption::before { content: "— "; color: var(--gold); }
 
   /* Comparativo */
-  .compare { border: 1px solid var(--line-ink); }
+  .compare { border: 1px solid var(--line-ink); border-radius: var(--card-shape); overflow: hidden; }
   .compare__row { display: grid; grid-template-columns: 1.2fr 1fr 1fr; }
   .compare__row > span { padding: 1rem 1.25rem; border-bottom: 1px solid var(--line-ink-soft); font-size: 0.95rem; }
   .compare__row > span:first-child { color: var(--stone-deep); border-right: 1px solid var(--line-ink-soft); }
