@@ -107,7 +107,7 @@ ul, ol { list-style: none; }
   --t-med:    0.5s;
   --t-slow:   0.8s;
 
-  --header-h: 88px;
+  --header-h: 100px;
 
   /* ── Sistema de forma da marca Arya ──
      Cantos arredondados generosos + assimetria (canto grande na diagonal),
@@ -361,18 +361,6 @@ em { font-style: italic; }
 .bracket--tr::before { top: 0; right: 0; border-width: 1px 1px 0 0; border-top-right-radius: var(--r-lg); }
 .bracket--br::before { bottom: 0; right: 0; border-width: 0 1px 1px 0; border-bottom-right-radius: var(--r-lg); }
 
-/* Moldura interna (passe-partout) dourada dentro de cards */
-.inframe { position: relative; }
-.inframe::after {
-  content: "";
-  position: absolute;
-  inset: clamp(10px, 1.2vw, 16px);
-  border: 1px solid var(--line-gold-soft);
-  border-radius: var(--r);
-  pointer-events: none;
-  transition: border-color var(--t-med) var(--ease);
-}
-.inframe:hover::after { border-color: var(--line-gold); }
 
 /* --------------------------------------------------------------------------- *
  *  REVEAL ON SCROLL

@@ -73,26 +73,40 @@ const personas = [
         </header>
 
         <div class="concept-grid">
-          <article class="concept-card inframe" data-reveal>
-            <span class="concept-card__idx">Plug &amp; Play</span>
-            <h3 class="h3">Entre e <em>opere</em>.</h3>
-            <p>
-              Salas prontas para uso, no modelo por posição. Ideal para startups e
-              empresas que querem começar rápido, sem se preocupar com infraestrutura.
-            </p>
-            <span class="concept-card__pav">Pavimentos 1 e 2</span>
-            <a class="concept-card__link" href="/locacoes">Ver o modelo Plug &amp; Play →</a>
+          <article class="concept-card" data-reveal>
+            <div class="concept-card__photo">
+              <Picture name="interior-01" alt="Estações de trabalho no modelo Plug & Play" width={900} height={560} />
+            </div>
+            <div class="concept-card__body">
+              <span class="concept-card__idx">Plug &amp; Play</span>
+              <h3 class="h3">Entre e <em>opere</em>.</h3>
+              <p>
+                Salas prontas para uso, no modelo por posição. Ideal para startups e
+                empresas que querem começar rápido, sem se preocupar com infraestrutura.
+              </p>
+              <div class="concept-card__foot">
+                <span class="concept-card__pav">Pavimentos 1 e 2</span>
+                <a class="concept-card__link" href="/locacoes">Ver o modelo <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
           </article>
 
-          <article class="concept-card concept-card--accent inframe" data-reveal style="--reveal-delay:.12s">
-            <span class="concept-card__idx">Por m²</span>
-            <h3 class="h3">Construa do seu <em>jeito</em>.</h3>
-            <p>
-              Locação tradicional de lajes corporativas. Espaços sem acabamento, para
-              que cada empresa personalize de acordo com sua cultura e necessidades.
-            </p>
-            <span class="concept-card__pav">Pavimentos 3, 4 e 5</span>
-            <a class="concept-card__link" href="/locacoes">Ver o modelo por m² →</a>
+          <article class="concept-card" data-reveal style="--reveal-delay:.12s">
+            <div class="concept-card__photo">
+              <Picture name="Enscape_2025-07-25-18-40-02" alt="Laje corporativa ampla no modelo por m²" width={900} height={560} />
+            </div>
+            <div class="concept-card__body">
+              <span class="concept-card__idx">Por m²</span>
+              <h3 class="h3">Construa do seu <em>jeito</em>.</h3>
+              <p>
+                Locação tradicional de lajes corporativas. Espaços sem acabamento, para
+                que cada empresa personalize de acordo com sua cultura e necessidades.
+              </p>
+              <div class="concept-card__foot">
+                <span class="concept-card__pav">Pavimentos 3, 4 e 5</span>
+                <a class="concept-card__link" href="/locacoes">Ver o modelo <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -246,49 +260,67 @@ const personas = [
   .sec-head .kicker { margin-top: 0.2rem; }
   .sec-head--center { align-items: center; text-align: center; }
 
-  /* ───────── CONCEITO ───────── */
-  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.25rem, 2vw, 2rem); }
-  .concept-card {
-    border: 1px solid var(--line-gold-soft);
-    border-radius: var(--shape-soft);
-    background: linear-gradient(160deg, rgba(80,21,15,0.28), rgba(26,10,7,0.1));
-    padding: clamp(2rem, 3.4vw, 3.4rem);
-    display: flex; flex-direction: column;
-    transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
+  /* ───────── CONCEITO — composição foto + bracket aberto ───────── */
+  .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4.5rem); }
+  .concept-card { display: flex; flex-direction: column; }
+
+  /* Foto no topo, cantos generosos assimétricos */
+  .concept-card__photo {
+    position: relative; z-index: 1;
+    border-radius: var(--shape-photo);
+    overflow: hidden;
   }
-  .concept-card__pav {
-    margin-top: 1.5rem;
-    align-self: flex-start;
-    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--gold);
+  .concept-card__photo :global(img) {
+    width: 100%; height: clamp(200px, 22vw, 280px); object-fit: cover; display: block;
+    transition: transform 0.7s var(--ease);
+  }
+  .concept-card:hover .concept-card__photo :global(img) { transform: scale(1.04); }
+
+  /* Bloco de texto com BRACKET ABERTO em U (linha dourada única, sem topo),
+     subindo atrás da foto pra "abraçar" o conjunto — grafismo da marca */
+  .concept-card__body {
+    position: relative;
+    margin: -28px clamp(8px, 1.2vw, 16px) 0;
+    padding: clamp(2rem, 2.6vw, 2.8rem) clamp(1.5rem, 2.2vw, 2.4rem) clamp(1.75rem, 2.4vw, 2.4rem);
+    display: flex; flex-direction: column; flex: 1;
+  }
+  .concept-card__body::before {
+    content: "";
+    position: absolute; inset: 0;
     border: 1px solid var(--line-gold);
-    border-radius: var(--btn-shape);
-    padding: 0.5rem 0.9rem;
+    border-top: 0;
+    border-radius: 0 0 var(--r) var(--r-lg);
+    pointer-events: none;
+    transition: border-color var(--t-med) var(--ease);
   }
-  .concept-card:hover { border-color: var(--line-gold); transform: translateY(-4px); }
-  .concept-card--accent { background: linear-gradient(160deg, rgba(80,21,15,0.5), rgba(26,10,7,0.15)); }
+  .concept-card:hover .concept-card__body::before { border-color: var(--gold); }
+
   .concept-card__idx {
     font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--gold); font-weight: 600;
   }
-  .concept-card h3 { margin-top: 1.2rem; }
+  .concept-card h3 { margin-top: 1rem; }
   .concept-card h3 em { color: var(--gold); font-style: italic; }
-  .concept-card > p { margin-top: 0.85rem; color: var(--stone); }
-  .ticks { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; }
-  .ticks li {
-    position: relative; padding-left: 1.6rem; font-size: 0.95rem; color: var(--cream);
+  .concept-card__body > p { margin-top: 0.85rem; color: var(--stone); }
+
+  .concept-card__foot {
+    margin-top: auto; padding-top: 1.75rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   }
-  .ticks li::before {
-    content: ""; position: absolute; left: 0; top: 0.55em;
-    width: 8px; height: 8px; border-left: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
-    transform: rotate(-45deg) translateY(-2px);
+  .concept-card__pav {
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--line-gold);
+    border-radius: var(--btn-shape);
+    padding: 0.45rem 0.85rem;
   }
   .concept-card__link {
-    margin-top: auto; padding-top: 1.75rem;
-    font-size: 0.82rem; letter-spacing: 0.08em; color: var(--gold);
-    transition: color var(--t-fast) var(--ease), letter-spacing var(--t-fast) var(--ease);
+    font-size: 0.8rem; letter-spacing: 0.08em; color: var(--cream);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: color var(--t-fast) var(--ease), gap var(--t-fast) var(--ease);
   }
-  .concept-card__link:hover { color: var(--gold-soft); letter-spacing: 0.12em; }
+  .concept-card__link span { color: var(--gold); transition: transform var(--t-fast) var(--ease); }
+  .concept-card__link:hover { color: var(--gold); gap: 0.85rem; }
 
   /* ───────── LOCALIZAÇÃO ───────── */
   .loc__grid { display: grid; grid-template-columns: 0.85fr 1fr; gap: clamp(2rem, 4vw, 5rem); align-items: center; }
