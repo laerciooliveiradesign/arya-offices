@@ -15,11 +15,12 @@ const gallery = [
   { name: 'interior-04', label: 'Ambientes integrados' },
 ];
 
-const personas = [
-  { n: '01', t: 'Startups', d: 'Saia do coworking para um endereço próprio sem imobilizar capital em obra e mobília.' },
-  { n: '02', t: 'Scale-ups', d: 'Espaço que cresce junto: amplie de uma sala para um pavimento conforme o time expande.' },
-  { n: '03', t: 'Filiais', d: 'Base sólida em Minas Gerais para operações que chegam de fora com estrutura completa.' },
-  { n: '04', t: 'Consolidadas', d: 'Personalize pavimentos inteiros com a identidade da sua empresa e infraestrutura premium.' },
+const criterios = [
+  { t: 'Faturamento', d: 'Pelo menos 51% do faturamento global deve ser proveniente de serviços de tecnologia e/ou inovação.' },
+  { t: 'Quadro de funcionários', d: 'Pelo menos 40% do quadro de funcionários deve ser composto por profissionais com formação comprovada em áreas de tecnologia e/ou inovação.' },
+  { t: 'Produtos e serviços', d: 'A empresa deve desenvolver serviços e/ou produtos vinculados à entrega final de soluções tecnológicas e/ou inovadoras.' },
+  { t: 'Pesquisa, Desenvolvimento e Inovação (PD&I)', d: 'A empresa deve ter capacidade de desenvolver novos produtos e serviços de base tecnológica por meio da instalação de laboratórios de PD&I, mesmo que a produção ocorra em local distinto.' },
+  { t: 'Startup', d: 'A empresa deve ser considerada uma startup nos termos da Lei Complementar Federal nº 182, de 1º de junho de 2021.' },
 ];
 ---
 <BaseLayout
@@ -67,7 +68,6 @@ const personas = [
     <section class="section section--dark" id="conceito">
       <div class="container">
         <header class="sec-head" data-reveal>
-          <span class="sec-num">01</span>
           <span class="kicker">O conceito</span>
           <h2 class="h2">Dois modos de ocupar.<br />Um só endereço.</h2>
         </header>
@@ -117,27 +117,21 @@ const personas = [
       <div class="container loc__grid">
         <div class="loc__media framed" data-reveal>
           <Picture name="Enscape_2025-07-25-18-01-37" alt="Entrada do edifício Arya Offices" width={1200} height={1500} />
-          <span class="loc__badge">Polo Tecnológico Sul · Uberlândia</span>
         </div>
 
         <div class="loc__body" data-reveal style="--reveal-delay:.1s">
-          <span class="sec-num">02</span>
           <span class="kicker">A localização</span>
           <h2 class="h2">No centro da inovação<br />de Uberlândia.</h2>
           <div class="prose mt-3">
             <p class="lead">
               O Arya Offices nasce dentro do <strong>Polo Tecnológico Sul</strong>, o primeiro
               loteamento empresarial público da cidade, dedicado a empresas de base tecnológica.
-            </p>
-            <p>
-              Infraestrutura completa: vias asfaltadas, iluminação em LED, estacionamento,
-              ciclovia e uma área de recreação generosa. Tudo cercado por uma vizinhança
-              qualificada de empresas que respiram tecnologia.
+              Uma vizinhança qualificada de empresas que respiram tecnologia.
             </p>
           </div>
           <div class="loc__stats">
             <div><strong>30+</strong><span>lotes empresariais no polo</span></div>
-            <div><strong>1 – 5</strong><span>pavimentos disponíveis</span></div>
+            <div><strong>1 a 5</strong><span>pavimentos disponíveis</span></div>
             <div><strong>100%</strong><span>foco em tecnologia</span></div>
           </div>
         </div>
@@ -148,9 +142,8 @@ const personas = [
     <section class="section section--bordo gal" id="galeria">
       <div class="container">
         <header class="sec-head sec-head--center" data-reveal>
-          <span class="sec-num">03</span>
           <span class="kicker kicker--center kicker--light">O lugar</span>
-          <h2 class="h2">Cada detalhe, pensado<br />para o trabalho que importa.</h2>
+          <h2 class="h2">Espaços que acompanham a forma<br />como grandes ideias acontecem.</h2>
         </header>
       </div>
 
@@ -165,25 +158,44 @@ const personas = [
     </section>
 
     <!-- ░░ PARA QUEM É ░░ -->
-    <section class="section section--dark who" id="para-quem">
+    <section class="section section--dark quem" id="para-quem">
       <div class="container">
         <header class="sec-head" data-reveal>
-          <span class="sec-num">04</span>
           <span class="kicker">Para quem é</span>
-          <h2 class="h2">Feito para empresas<br />em qualquer estágio.</h2>
+          <h2 class="h2">Quem pode ocupar o Arya.</h2>
         </header>
 
-        <div class="who__grid">
-          {personas.map((p, i) => (
-            <article class="who__card" data-reveal style={`--reveal-delay:${i * 0.08}s`}>
-              <div class="who__top">
-                <span class="who__num">{p.n}</span>
-                <span class="who__rule" aria-hidden="true"></span>
+        <div class="quem__intro" data-reveal>
+          <p class="lead">
+            Os espaços são destinados exclusivamente a empresas de base tecnológica,
+            conforme as diretrizes do Polo Tecnológico Sul de Uberlândia.
+          </p>
+          <p class="quem__rule">
+            <span class="quem__rule-mark" aria-hidden="true"></span>
+            Para estar apta à ocupação, a empresa deve atender a <strong>pelo menos dois</strong>
+            dos seguintes critérios ligados à inovação.
+          </p>
+        </div>
+
+        <ol class="crit" data-reveal>
+          {criterios.map((c, i) => (
+            <li class="crit__item">
+              <span class="crit__num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="crit__body">
+                <h3 class="crit__t">{c.t}</h3>
+                <p>{c.d}</p>
               </div>
-              <h3 class="who__t">{p.t}</h3>
-              <p>{p.d}</p>
-            </article>
+            </li>
           ))}
+        </ol>
+
+        <div class="quem__close" data-reveal>
+          <p>
+            A locação é voltada apenas para CNPJs, o que assegura um ambiente alinhado,
+            com negócios que compartilham desafios, linguagem e visão de crescimento,
+            fortalecendo o ecossistema do Polo.
+          </p>
+          <a class="btn btn--outline-gold" href="/contato">Vem conhecer nosso espaço</a>
         </div>
       </div>
     </section>
@@ -264,7 +276,7 @@ const personas = [
   .sec-head .kicker { margin-top: 0.2rem; }
   .sec-head--center { align-items: center; text-align: center; }
 
-  /* ───────── CONCEITO — composição foto + bracket aberto ───────── */
+  /* ───────── CONCEITO · composição foto + bracket aberto ───────── */
   .concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4.5rem); }
   .concept-card { display: flex; flex-direction: column; }
 
@@ -281,7 +293,7 @@ const personas = [
   .concept-card:hover .concept-card__photo :global(img) { transform: scale(1.04); }
 
   /* Bloco de texto com BRACKET ABERTO em U (linha dourada única, sem topo),
-     subindo atrás da foto pra "abraçar" o conjunto — grafismo da marca */
+     subindo atrás da foto pra "abraçar" o conjunto · grafismo da marca */
   .concept-card__body {
     position: relative;
     margin: -28px clamp(8px, 1.2vw, 16px) 0;
@@ -365,30 +377,48 @@ const personas = [
   .gal__item figcaption { display: inline-flex; align-items: center; gap: 0.6rem; }
   .gal__item figcaption::before { content: ""; width: 18px; height: 1px; background: var(--gold); flex: none; }
 
-  /* ───────── PARA QUEM É ───────── */
-  .who__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 1.6vw, 1.75rem); }
-  .who__card {
-    padding: clamp(2rem, 2.4vw, 2.6rem) clamp(1.4rem, 1.8vw, 2rem) clamp(1.6rem, 2vw, 2.2rem);
-    border: 1px solid var(--line-gold-soft);
-    border-radius: var(--shape-soft);
-    display: flex; flex-direction: column; gap: 0.6rem;
-    transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
+  /* ───────── QUEM PODE OCUPAR ───────── */
+  .quem__intro {
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(2rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--line-cream-soft);
   }
-  .who__card:hover {
-    border-color: var(--line-gold);
-    transform: translateY(-4px);
-    background: linear-gradient(160deg, rgba(80,21,15,0.22), transparent 72%);
+  .quem__intro .lead { color: var(--cream); }
+  .quem__rule {
+    display: flex; gap: 1rem; align-items: baseline;
+    color: var(--stone); font-size: 1.02rem; line-height: 1.6;
   }
-  /* topo: número + macron dourado da marca */
-  .who__top { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 0.4rem; }
-  .who__num {
-    font-size: clamp(1.8rem, 1.2rem + 1.4vw, 2.4rem);
+  .quem__rule strong { color: var(--gold); font-weight: 600; }
+  .quem__rule-mark { flex: none; width: 28px; height: 2px; background: var(--gold); transform: translateY(-0.35em); }
+
+  /* critérios: lista editorial numerada com macron */
+  .crit { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .crit__item {
+    display: flex; gap: clamp(1rem, 1.6vw, 1.5rem);
+    padding: clamp(1.5rem, 2.2vw, 2rem) clamp(1rem, 2vw, 2rem);
+    border-bottom: 1px solid var(--line-cream-soft);
+    transition: background var(--t-med) var(--ease);
+  }
+  .crit__item:hover { background: linear-gradient(120deg, rgba(80,21,15,0.2), transparent 70%); }
+  /* borda vertical entre as colunas nos itens ímpares (esquerda) */
+  .crit__item:nth-child(odd) { border-right: 1px solid var(--line-cream-soft); }
+  .crit__num {
+    flex: none; font-size: clamp(1.6rem, 1.1rem + 1.2vw, 2.1rem);
     font-weight: 200; line-height: 1; color: var(--gold); letter-spacing: 0.02em;
-    flex: none;
   }
-  .who__rule { height: 1px; flex: 1; background: var(--line-gold); }
-  .who__t { font-size: 1.35rem; font-weight: 500; }
-  .who__card p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
+  .crit__body { display: flex; flex-direction: column; gap: 0.5rem; }
+  .crit__t { font-size: 1.15rem; font-weight: 500; color: var(--gold-soft); line-height: 1.25; }
+  .crit__body p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
+  /* 5º critério (ímpar sozinho) ocupa a linha inteira */
+  .crit__item:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
+
+  .quem__close {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 1.75rem;
+    max-width: 62ch; margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  }
+  .quem__close p { color: var(--stone); font-size: 1.02rem; line-height: 1.65; }
 
   /* ───────── CTA FINAL ───────── */
   .cta-final { position: relative; padding-block: clamp(5rem, 4rem + 8vw, 9rem); overflow: hidden; isolation: isolate; text-align: center; }
@@ -413,7 +443,7 @@ const personas = [
     .concept-grid { grid-template-columns: 1fr; }
     .loc__grid { grid-template-columns: 1fr; }
     .loc__media { order: -1; }
-    .who__grid { grid-template-columns: 1fr 1fr; }
+    .quem__intro { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 
   /* Mobile: hero limpo, sem quebras forçadas, espaçamento profissional */
@@ -439,8 +469,11 @@ const personas = [
     .sec-head { margin-bottom: 2rem; }
     .concept-card__body { margin-inline: 0; }
   }
+  @media (max-width: 720px) {
+    .crit { grid-template-columns: 1fr; }
+    .crit__item:nth-child(odd) { border-right: 0; }
+  }
   @media (max-width: 520px) {
-    .who__grid { grid-template-columns: 1fr; }
     .loc__stats { grid-template-columns: 1fr; gap: 1.25rem; text-align: left; }
     .hero__cta { flex-direction: column; align-items: stretch; }
     .hero__cta .btn { width: 100%; }

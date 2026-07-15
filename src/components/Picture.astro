@@ -1,15 +1,15 @@
 ---
 /**
- * <Picture> — renderiza <picture> com fonte WebP + fallback JPG.
+ * <Picture> · renderiza <picture> com fonte WebP + fallback JPG.
  * Assume que existe /assets/fotos/{name}.webp e /assets/fotos/{name}.jpg
  *
  * Props:
- *   name      — slug do arquivo sem extensão (ex: "FachadaAryaNoite")
- *   alt       — texto alternativo (obrigatório p/ acessibilidade)
- *   eager     — true = carrega imediatamente (hero); default lazy
- *   sizes     — atributo sizes opcional
- *   className — classe extra no <img>
- *   width/height — dimensões intrínsecas (evita layout shift)
+ *   name      · slug do arquivo sem extensão (ex: "FachadaAryaNoite")
+ *   alt       · texto alternativo (obrigatório p/ acessibilidade)
+ *   eager     · true = carrega imediatamente (hero); default lazy
+ *   sizes     · atributo sizes opcional
+ *   className · classe extra no <img>
+ *   width/height · dimensões intrínsecas (evita layout shift)
  */
 interface Props {
   name: string;
