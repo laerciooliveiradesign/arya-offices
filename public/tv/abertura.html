@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arya Offices · Abertura</title>
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#E7A930; --gold-soft:#F2C66B; --gold-deep:#A87617;
+    --cream:#F2EBDC; --stone:#C9BFA8; --stone-dim:#9B9381;
+    --black:#0E0606; --bordo:#50150F; --bordo-deep:#2A0A07;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;background:var(--black);cursor:none}
+  body{
+    font-family:'Jost','Helvetica Neue',system-ui,sans-serif;
+    color:var(--cream);
+    display:grid;place-items:center;
+    position:relative;
+  }
+
+  /* ── Fundo: glow radial bordô + vinheta ── */
+  .bg{position:fixed;inset:0;z-index:0}
+  .bg::before{
+    content:"";position:absolute;inset:-10%;
+    background:
+      radial-gradient(46% 52% at 50% 46%, rgba(80,21,15,.62), transparent 68%),
+      radial-gradient(80% 80% at 50% 50%, rgba(42,10,7,.55), transparent 75%);
+    animation:breathe 12s var(--ease) infinite alternate;
+  }
+  .bg::after{ /* vinheta */
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.72));
+  }
+  @keyframes breathe{from{transform:scale(1);opacity:.9}to{transform:scale(1.08);opacity:1}}
+
+  /* faixa de luz dourada girando bem devagar */
+  .sweep{position:fixed;inset:-30%;z-index:1;
+    background:conic-gradient(from 0deg at 50% 50%,
+      transparent 0deg, rgba(231,169,48,.05) 22deg, transparent 60deg,
+      transparent 180deg, rgba(231,169,48,.04) 205deg, transparent 250deg);
+    animation:spin 42s linear infinite;mix-blend-mode:screen}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ── Partículas douradas ── */
+  #dust{position:fixed;inset:0;z-index:2;pointer-events:none}
+  .p{position:absolute;bottom:-4vh;border-radius:50%;
+    background:radial-gradient(circle,var(--gold-soft),rgba(231,169,48,0));
+    opacity:0;animation:rise linear infinite}
+  @keyframes rise{
+    0%{transform:translateY(0) translateX(0);opacity:0}
+    12%{opacity:.9}
+    88%{opacity:.5}
+    100%{transform:translateY(-112vh) translateX(var(--dx,0));opacity:0}
+  }
+
+  /* ── Grain ── */
+  .grain{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>")}
+
+  /* ── Brackets dourados nos cantos (moldura do telão) ── */
+  .frame span{position:fixed;z-index:5;width:clamp(46px,7vw,120px);height:clamp(46px,7vw,120px);
+    border-style:solid;border-color:var(--gold);border-width:0;opacity:0;
+    animation:frameIn 1.6s var(--ease) 1.2s forwards}
+  .frame .tl{top:5vh;left:5vw;border-top-width:1.5px;border-left-width:1.5px;border-top-left-radius:22px}
+  .frame .tr{top:5vh;right:5vw;border-top-width:1.5px;border-right-width:1.5px;border-top-right-radius:44px}
+  .frame .bl{bottom:5vh;left:5vw;border-bottom-width:1.5px;border-left-width:1.5px;border-bottom-left-radius:44px}
+  .frame .br{bottom:5vh;right:5vw;border-bottom-width:1.5px;border-right-width:1.5px;border-bottom-right-radius:22px}
+  @keyframes frameIn{from{opacity:0}to{opacity:.55}}
+
+  /* ── Conteúdo central ── */
+  .stage{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;text-align:center;
+    padding:0 6vw;animation:stageBreath 9s var(--ease) infinite alternate}
+  @keyframes stageBreath{from{transform:translateY(0) scale(1)}to{transform:translateY(-.6vh) scale(1.012)}}
+
+  .logo-wrap{position:relative;display:grid;place-items:center}
+  .logo-glow{position:absolute;width:120%;height:180%;border-radius:50%;
+    background:radial-gradient(circle,rgba(231,169,48,.28),rgba(231,169,48,0) 62%);
+    filter:blur(6px);animation:glow 4.5s ease-in-out infinite}
+  @keyframes glow{0%,100%{opacity:.5;transform:scale(.96)}50%{opacity:1;transform:scale(1.06)}}
+  .logo{position:relative;height:clamp(90px,17vh,230px);width:auto;
+    filter:drop-shadow(0 8px 40px rgba(0,0,0,.5));
+    opacity:0;transform:translateY(18px) scale(.94);
+    animation:logoIn 2.2s var(--ease) .25s forwards}
+  @keyframes logoIn{to{opacity:1;transform:none}}
+
+  .tagline{margin-top:clamp(1.6rem,3.4vh,3rem);max-width:26ch;
+    font-weight:300;line-height:1.28;letter-spacing:-.02em;
+    font-size:clamp(1.1rem,2.5vw,2.4rem);color:var(--cream);
+    opacity:0;animation:up 1.6s var(--ease) 1s forwards}
+  .tagline b{color:var(--gold);font-weight:600}
+
+  .macron{width:clamp(70px,9vw,150px);height:2px;background:var(--gold);
+    margin:clamp(1.4rem,3vh,2.4rem) auto 0;opacity:0;transform:scaleX(0);transform-origin:center;
+    animation:draw 1.4s var(--ease) 1.7s forwards}
+  @keyframes draw{to{opacity:.95;transform:scaleX(1)}}
+
+  .meta{margin-top:clamp(1rem,2.4vh,1.9rem);
+    font-size:clamp(.62rem,1.15vw,1rem);font-weight:500;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--stone);opacity:0;animation:up 1.6s var(--ease) 2.1s forwards}
+  .meta b{color:var(--gold-soft);font-weight:600}
+
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.01ms!important;animation-iteration-count:1!important}
+    .logo,.tagline,.macron,.meta,.frame span{opacity:1!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="sweep"></div>
+  <div id="dust"></div>
+
+  <div class="frame"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+
+  <div class="stage">
+    <div class="logo-wrap">
+      <div class="logo-glow"></div>
+      <img class="logo" src="../assets/logo-light.svg" alt="Arya Offices" />
+    </div>
+    <p class="tagline">Onde empresas de tecnologia encontram <b>flexibilidade</b> e <b>conexão</b>.</p>
+    <div class="macron"></div>
+    <p class="meta"><b>Inauguração</b> · Polo Tecnológico Sul · Uberlândia</p>
+  </div>
+
+  <div class="grain"></div>
+
+<script>
+  // partículas douradas
+  (function(){
+    var host=document.getElementById('dust');
+    var N=window.matchMedia('(prefers-reduced-motion:reduce)').matches?0:26;
+    for(var i=0;i<N;i++){
+      var p=document.createElement('span');p.className='p';
+      var s=2+Math.random()*5;
+      p.style.width=s+'px';p.style.height=s+'px';
+      p.style.left=(Math.random()*100)+'vw';
+      var dur=13+Math.random()*16;
+      p.style.animationDuration=dur+'s';
+      p.style.animationDelay=(-Math.random()*dur)+'s';
+      p.style.setProperty('--dx',((Math.random()*2-1)*12)+'vw');
+      host.appendChild(p);
+    }
+  })();
+</script>
+</body>
+</html>

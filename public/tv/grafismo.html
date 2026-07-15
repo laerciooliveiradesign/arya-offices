@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arya Offices · Grafismo</title>
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#E7A930; --gold-soft:#F2C66B;
+    --cream:#F2EBDC; --stone:#C9BFA8; --stone-dim:#9B9381;
+    --black:#0E0606; --bordo:#50150F; --bordo-deep:#2A0A07;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;cursor:none;background:var(--bordo-deep)}
+  body{
+    font-family:'Jost','Helvetica Neue',system-ui,sans-serif;color:var(--cream);
+    display:grid;place-items:center;position:relative;
+  }
+
+  /* ── Fundo bordô com profundidade ── */
+  .base{position:fixed;inset:0;z-index:0;
+    background:
+      radial-gradient(60% 60% at 50% 42%, rgba(80,21,15,.55), transparent 70%),
+      linear-gradient(160deg, #34100B, #1C0705);}
+
+  /* ── Padrão geométrico da marca (2 camadas em drift) ── */
+  .pattern{position:fixed;inset:-20%;z-index:1;opacity:.5;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><g fill='none' stroke='%23E7A930' stroke-width='1.4' opacity='0.16'><rect x='34' y='30' width='86' height='86' rx='30' ry='14'/><rect x='150' y='150' width='72' height='72' rx='26' ry='10'/><path d='M46 150 h44'/><path d='M170 40 h44'/></g><g fill='%23E7A930' opacity='0.12'><rect x='196' y='44' width='34' height='6' rx='3'/><rect x='150' y='120' width='8' height='8' transform='rotate(45 154 124)'/><rect x='60' y='196' width='8' height='8' transform='rotate(45 64 200)'/></g></svg>");
+    background-size:clamp(180px,15vw,300px);
+    animation:drift 90s linear infinite;}
+  .pattern.two{opacity:.28;transform:scale(1.6);
+    animation:drift2 140s linear infinite;mix-blend-mode:screen}
+  @keyframes drift{to{background-position:520px 520px}}
+  @keyframes drift2{to{background-position:-620px 380px}}
+
+  /* ── Vinheta ── */
+  .vign{position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(120% 120% at 50% 50%, transparent 52%, rgba(14,6,6,.78))}
+
+  /* ── Palco central ── */
+  .stage{position:relative;z-index:4;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;padding:0 6vw}
+
+  /* logo com moldura dourada offset (grafismo .framed) */
+  .logo-frame{position:relative;display:inline-grid;place-items:center;
+    padding:clamp(1.2rem,3vh,2.6rem) clamp(1.6rem,4vw,3.4rem);
+    opacity:0;transform:translateY(16px);animation:up 1.8s var(--ease) .2s forwards}
+  .logo-frame::before{content:"";position:absolute;
+    inset:0 -18px -18px 0;border:1.5px solid var(--gold);
+    border-radius:44px 14px 44px 0;opacity:.7;
+    animation:framePulse 5s ease-in-out infinite}
+  @keyframes framePulse{0%,100%{opacity:.45;transform:translate(0,0)}50%{opacity:.85;transform:translate(2px,2px)}}
+  .logo{position:relative;height:clamp(72px,12vh,180px);width:auto;
+    filter:drop-shadow(0 6px 30px rgba(0,0,0,.5))}
+
+  /* ciclo de palavras cinético */
+  .cycler{margin-top:clamp(2rem,5vh,4rem);height:clamp(3rem,12vh,9rem);position:relative;width:100%;
+    display:grid;place-items:center;overflow:hidden}
+  .word{position:absolute;
+    font-weight:700;letter-spacing:.02em;line-height:1;
+    font-size:clamp(2.2rem,9vw,8rem);color:var(--gold);
+    opacity:0;transform:translateY(120%);filter:blur(8px)}
+  .word.in{animation:wordIn .9s var(--ease) forwards}
+  .word.out{animation:wordOut .8s var(--ease) forwards}
+  @keyframes wordIn{from{opacity:0;transform:translateY(115%);filter:blur(10px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+  @keyframes wordOut{from{opacity:1;transform:translateY(0);filter:blur(0)}to{opacity:0;transform:translateY(-115%);filter:blur(10px)}}
+
+  /* traço macron sob o ciclo */
+  .rule{width:clamp(90px,10vw,180px);height:2px;background:var(--gold);opacity:.55;
+    margin-top:clamp(1.4rem,3vh,2.4rem);
+    opacity:0;transform:scaleX(0);animation:draw 1.4s var(--ease) 1.2s forwards}
+  @keyframes draw{to{opacity:.55;transform:scaleX(1)}}
+
+  .foot{position:fixed;bottom:5.5vh;left:0;right:0;z-index:4;text-align:center;
+    font-size:clamp(.6rem,1.05vw,.92rem);font-weight:500;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--stone-dim);opacity:0;animation:up 1.6s var(--ease) 1.6s forwards}
+  .foot b{color:var(--gold-soft);font-weight:600}
+
+  /* grain */
+  .grain{position:fixed;inset:0;z-index:6;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>")}
+
+  @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+  @media(prefers-reduced-motion:reduce){
+    .pattern,.pattern.two{animation:none}
+    .word{transition:opacity .3s}
+    .logo-frame{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+  <div class="base"></div>
+  <div class="pattern"></div>
+  <div class="pattern two"></div>
+  <div class="vign"></div>
+
+  <div class="stage">
+    <div class="logo-frame">
+      <img class="logo" src="../assets/logo-light.svg" alt="Arya Offices" />
+    </div>
+    <div class="cycler" id="cycler" aria-hidden="true"></div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="foot"><b>Arya Offices</b> · Polo Tecnológico Sul · Uberlândia/MG</div>
+
+  <div class="grain"></div>
+
+<script>
+  (function(){
+    var words=["FLEXIBILIDADE","CONEXÃO","INOVAÇÃO","TECNOLOGIA","CRESCIMENTO"];
+    var host=document.getElementById('cycler');
+    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var i=0, cur=null;
+    function show(){
+      var el=document.createElement('span');
+      el.className='word in';
+      el.textContent=words[i];
+      host.appendChild(el);
+      var prev=cur; cur=el;
+      if(prev){ prev.className='word out'; setTimeout(function(){prev.remove();},900); }
+      i=(i+1)%words.length;
+    }
+    show();
+    setInterval(show, reduce?3200:2600);
+  })();
+</script>
+</body>
+</html>
