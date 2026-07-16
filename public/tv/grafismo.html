@@ -4,91 +4,165 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Arya Offices</title>
-<link rel="icon" type="image/svg+xml" href="../assets/logo.svg" />
+<link rel="icon" type="image/svg+xml" href="../assets/logo-light.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root{ --gold:#E7A930; --gold-soft:#F2C66B; --cream:#F2EBDC; --stone:#C9BFA8;
-    --black:#0E0606; --bordo:#50150F; --bordo-deep:#2A0A07; --ease:cubic-bezier(.22,1,.36,1); }
+  :root{
+    --gold:#E7A930; --gold-soft:#F2C66B; --cream:#F2EBDC; --stone:#C9BFA8;
+    --black:#0E0606; --bordo:#50150F; --bordo-deep:#2A0A07;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{width:100%;height:100%;overflow:hidden;cursor:none;background:var(--black)}
-  body{font-family:'Jost','Helvetica Neue',system-ui,sans-serif;color:var(--cream);display:grid;place-items:center;position:relative}
+  body{
+    font-family:'Jost','Helvetica Neue',system-ui,sans-serif;
+    color:var(--cream);
+    display:grid;place-items:center;position:relative;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    user-select:none;
+  }
 
-  /* Fundo simples e escuro: glow bordô no centro + escurecimento. Sem padrão. */
-  .bg{position:fixed;inset:0;z-index:0;
+  /* ---------- Fundo: profundidade bordô + preto, glow sutil. Sem padrão. ---------- */
+  .bg{
+    position:fixed;inset:0;z-index:0;
     background:
-      radial-gradient(52% 58% at 50% 44%, rgba(80,21,15,.55), transparent 68%),
-      radial-gradient(120% 120% at 50% 50%, #1B0806 30%, #0E0606 78%);}
-  .bg::after{content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.7));
-    animation:pulse 9s ease-in-out infinite alternate}
-  @keyframes pulse{from{opacity:.6}to{opacity:1}}
+      radial-gradient(58% 62% at 50% 44%, rgba(80,21,15,.58), transparent 72%),
+      radial-gradient(130% 130% at 50% 50%, #1B0806 0%, #0E0606 58%, #070302 100%);
+  }
+  .glow{
+    position:fixed;left:50%;top:50%;z-index:1;
+    width:118vw;height:86vh;transform:translate(-50%,-50%);
+    background:radial-gradient(closest-side,
+      rgba(231,169,48,.16), rgba(231,169,48,.05) 46%, transparent 72%);
+    filter:blur(8px);
+    animation:breathe 11s ease-in-out infinite alternate;
+    will-change:opacity,transform;
+  }
+  @keyframes breathe{
+    from{opacity:.30;transform:translate(-50%,-50%) scale(1)}
+    to{opacity:.55;transform:translate(-50%,-50%) scale(1.10)}
+  }
+  .vignette{
+    position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:radial-gradient(120% 120% at 50% 50%, transparent 54%, rgba(0,0,0,.60) 100%);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.032;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.65'/></svg>");
+  }
 
-  .grain{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>")}
+  /* ---------- Palco central ---------- */
+  .stage{
+    position:relative;z-index:5;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    width:100%;padding:0 6vw;
+  }
 
-  /* Palco centralizado: logo + macron + frase */
-  .stage{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;padding:0 6vw}
+  .logo{
+    height:clamp(64px,9vh,128px);width:auto;
+    filter:drop-shadow(0 10px 40px rgba(0,0,0,.55));
+    opacity:0;transform:translateY(14px);
+    animation:rise 1.8s var(--ease) .3s forwards;
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
 
-  .logo{height:clamp(78px,13vh,190px);width:auto;filter:drop-shadow(0 8px 34px rgba(0,0,0,.5));
-    opacity:0;transform:translateY(12px) scale(.96);animation:logoIn 2s var(--ease) .2s forwards}
-  @keyframes logoIn{to{opacity:1;transform:none}}
+  /* Macron dourado · o único grafismo da marca, sereno */
+  .rule{
+    width:clamp(72px,8vw,150px);height:2px;border-radius:2px;
+    margin-top:clamp(1.6rem,3.6vh,2.8rem);
+    background:linear-gradient(90deg,transparent,var(--gold) 22%,var(--gold-soft) 50%,var(--gold) 78%,transparent);
+    box-shadow:0 0 22px rgba(231,169,48,.32);
+    opacity:0;transform:scaleX(.28);
+    animation:draw 1.5s var(--ease) 1s forwards;
+  }
+  @keyframes draw{to{opacity:.92;transform:scaleX(1)}}
 
-  .macron{width:clamp(64px,7vw,120px);height:2px;background:var(--gold);opacity:0;transform:scaleX(0);
-    margin-top:clamp(1.8rem,4vh,3rem);animation:draw 1.4s var(--ease) 1s forwards}
-  @keyframes draw{to{opacity:.85;transform:scaleX(1)}}
+  /* ---------- Legenda: crossfade cinematográfico (blur + scale) ---------- */
+  .caption{
+    position:relative;width:100%;
+    height:clamp(3.4rem,11vh,7.4rem);
+    margin-top:clamp(1.6rem,3.4vh,2.7rem);
+    display:grid;place-items:center;
+  }
+  .word{
+    position:absolute;white-space:nowrap;
+    font-weight:400;line-height:1;
+    font-size:clamp(1.9rem,4.1vw,4.5rem);
+    letter-spacing:.28em;text-indent:.28em; /* compensa o tracking, mantém centro óptico */
+    background:linear-gradient(176deg,#F7F1E5 0%, var(--cream) 46%, var(--gold-soft) 118%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:var(--gold-soft);
+    filter:drop-shadow(0 0 34px rgba(231,169,48,.22));
+    opacity:0;
+    will-change:opacity,transform,filter;
+  }
+  .word.play{animation:cine 4.2s var(--ease) forwards}
+  @keyframes cine{
+    0%{opacity:0;transform:scale(1.05);filter:blur(10px)}
+    16%{opacity:1;transform:scale(1);filter:blur(0)}
+    84%{opacity:1;transform:scale(1.028);filter:blur(0)}
+    100%{opacity:0;transform:scale(1.05);filter:blur(8px)}
+  }
 
-  /* ciclo de frases */
-  .cycler{position:relative;width:100%;
-    height:clamp(3.4rem,13vh,10rem);margin-top:clamp(1.6rem,3.5vh,2.8rem);
-    display:grid;place-items:center;overflow:hidden}
-  .word{position:absolute;white-space:nowrap;
-    font-weight:600;line-height:1;color:var(--gold);
-    font-size:clamp(2rem,7.5vw,7rem);letter-spacing:.06em;
-    opacity:0}
-  .word.in{animation:wIn 1s var(--ease) forwards}
-  .word.out{animation:wOut .75s var(--ease) forwards}
-  @keyframes wIn{
-    from{opacity:0;transform:translateY(28px);letter-spacing:.32em}
-    to{opacity:1;transform:translateY(0);letter-spacing:.06em}}
-  @keyframes wOut{
-    from{opacity:1;transform:translateY(0);letter-spacing:.06em}
-    to{opacity:0;transform:translateY(-24px);letter-spacing:.2em}}
-
+  /* ---------- Movimento reduzido ---------- */
   @media(prefers-reduced-motion:reduce){
-    .bg::after{animation:none}
-    .logo,.macron{animation:none;opacity:1;transform:none}
-    .word.in{animation:none;opacity:1}
+    .glow{animation:none;opacity:.46}
+    .logo,.rule{animation:none;opacity:1;transform:none}
+    .rule{opacity:.92}
+    .word.play{animation:cineRM 4.2s ease-in-out forwards}
+    @keyframes cineRM{0%{opacity:0}14%{opacity:1}86%{opacity:1}100%{opacity:0}}
   }
 </style>
 </head>
 <body>
   <div class="bg"></div>
-  <div class="stage">
+  <div class="glow"></div>
+  <div class="vignette"></div>
+
+  <main class="stage">
     <img class="logo" src="../assets/logo-light.svg" alt="Arya Offices" />
-    <div class="macron"></div>
-    <div class="cycler" id="cycler" aria-hidden="true"></div>
-  </div>
+    <div class="rule"></div>
+    <div class="caption" id="caption" aria-hidden="true"></div>
+  </main>
+
   <div class="grain"></div>
 
 <script>
   (function(){
-    var words=["FLEXIBILIDADE","CONEXÃO","INOVAÇÃO","TECNOLOGIA","CRESCIMENTO"];
-    var host=document.getElementById('cycler');
-    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    var i=0, cur=null;
+    var words = ["FLEXIBILIDADE","CONEXÃO","INOVAÇÃO","TECNOLOGIA","CRESCIMENTO"];
+    var host  = document.getElementById('caption');
+    var SPAWN = 3500;   // intervalo entre entradas -> ~700ms de crossfade sobre os 4200ms
+    var i = 0;
+
     function show(){
-      var el=document.createElement('span');
-      el.className='word in';
-      el.textContent=words[i];
+      var el = document.createElement('span');
+      el.className = 'word play';
+      el.textContent = words[i];
       host.appendChild(el);
-      var prev=cur; cur=el;
-      if(prev){ prev.className='word out'; setTimeout(function(){ if(prev.parentNode) prev.remove(); },800); }
-      i=(i+1)%words.length;
+      el.addEventListener('animationend', function(){
+        if(el.parentNode) el.parentNode.removeChild(el);
+      });
+      i = (i + 1) % words.length;
     }
-    setTimeout(show, 1600);
-    setInterval(show, reduce?3400:2800);
+
+    function begin(){
+      show();
+      setInterval(show, SPAWN);
+    }
+
+    function start(){
+      // primeira legenda depois que logo + macron assentam
+      setTimeout(begin, 1650);
+    }
+
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(start);
+      setTimeout(start, 1800); // fallback caso o evento de fontes não resolva
+    } else {
+      setTimeout(start, 400);
+    }
   })();
 </script>
 </body>
