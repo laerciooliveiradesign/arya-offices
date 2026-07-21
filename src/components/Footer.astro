@@ -128,7 +128,12 @@ const year = new Date().getFullYear();
     .ft__brand { grid-column: 1 / -1; }
   }
   @media (max-width: 520px) {
-    .ft__top { grid-template-columns: 1fr; }
+    .ft__top { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+    .ft__brand { grid-column: 1 / -1; }
+    .ft__brand img { height: 52px; margin-bottom: 1rem; }
+    .ft__tag { font-size: 1rem; max-width: 34ch; }
+    .ft__col:last-child { grid-column: 1 / -1; }
+    .ft__macron { margin-block: 2.25rem; }
     .ft__bottom { flex-direction: column; gap: 0.5rem; }
   }
 </style>

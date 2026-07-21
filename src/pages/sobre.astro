@@ -178,8 +178,9 @@ const estrutura = [
     .estrutura__head { grid-template-columns: 1fr; align-items: start; gap: 1rem; }
     .estrutura-grid { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 480px) {
-    .estrutura-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-    .estr-card__media :global(img) { height: clamp(140px, 40vw, 180px); }
+  @media (max-width: 600px) {
+    .estrutura-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+    .estr-card__media :global(img) { height: clamp(210px, 58vw, 300px); }
+    .estr-card__label { padding: clamp(1.6rem, 6vw, 2.2rem) clamp(1rem, 4vw, 1.4rem) clamp(1rem, 3.5vw, 1.3rem); }
   }
 </style>
