@@ -547,12 +547,12 @@ const criterios = [
   @media (max-width: 520px) {
     .loc__stats { grid-template-columns: 1fr; gap: 0; margin-top: 2rem; }
     .loc__stats > div {
-      display: flex; align-items: baseline; justify-content: space-between; gap: 1.25rem;
-      padding-block: 1.05rem;
+      display: grid; grid-template-columns: 5rem 1fr; align-items: center; gap: 0 1rem;
+      padding-block: 1.15rem;
     }
     .loc__stats > div + div { border-top: 1px solid var(--line-ink-soft); }
-    .loc__stats strong { margin: 0; font-size: 2.1rem; line-height: 1; }
-    .loc__stats span { margin: 0; text-align: right; max-width: 17ch; }
+    .loc__stats strong { margin: 0; font-size: 2rem; line-height: 1; }
+    .loc__stats span { margin: 0; text-align: left; line-height: 1.35; max-width: none; }
     .hero__cta { flex-direction: column; align-items: stretch; }
     .hero__cta .btn { width: 100%; }
   }
