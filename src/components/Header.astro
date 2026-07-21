@@ -5,6 +5,7 @@ interface Props {
 const { active } = Astro.props;
 
 const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
+const areaCliente = 'https://146055-52102.prod.mitralab.io/login';
 
 const links = [
   { id: 'inicio',   label: 'Início',    href: '/home' },
@@ -31,10 +32,10 @@ const links = [
       ))}
     </nav>
 
-    <button class="hdr__cta" type="button" title="Em breve" aria-label="Área do Cliente (em breve)">
+    <a class="hdr__cta" href={areaCliente} aria-label="Área do Cliente">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 12.6a4.3 4.3 0 1 0 0-8.6 4.3 4.3 0 0 0 0 8.6zM4 20.4C4 16.9 7.6 14.4 12 14.4s8 2.5 8 6v.6H4v-.6z"/></svg>
       <span>Área do Cliente</span>
-    </button>
+    </a>
 
     <button class="hdr__burger" type="button" data-burger aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
@@ -53,7 +54,7 @@ const links = [
     ))}
   </nav>
   <div class="mnav__cta">
-    <button class="btn btn--outline-gold" type="button" title="Em breve">Área do Cliente</button>
+    <a class="btn btn--outline-gold" href={areaCliente}>Área do Cliente</a>
     <a class="btn" href={wa} target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
   </div>
   <div class="mnav__foot">
