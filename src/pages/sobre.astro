@@ -5,14 +5,14 @@ import Footer from '../components/Footer.astro';
 import Picture from '../components/Picture.astro';
 
 const estrutura = [
-  'Salas privativas',
-  'Áreas compartilhadas',
-  'Rooftop',
-  'Sala de descanso',
-  'Recepção acolhedora',
-  'Estacionamento',
-  'Vestiários',
-  'Cozinha completa',
+  { t: 'Salas privativas', img: 'salas-privativas' },
+  { t: 'Áreas compartilhadas', img: 'areas-compartilhadas' },
+  { t: 'Rooftop', img: 'rooftop' },
+  { t: 'Sala de descanso', img: 'sala-de-descanso' },
+  { t: 'Recepção acolhedora', img: 'recepcao-acolhedora' },
+  { t: 'Estacionamento', img: 'estacionamento' },
+  { t: 'Vestiários', img: 'vestiarios' },
+  { t: 'Cozinha completa', img: 'cozinha-completa' },
 ];
 ---
 <BaseLayout
@@ -25,7 +25,7 @@ const estrutura = [
   <main id="main">
     <!-- Page hero -->
     <section class="page-hero">
-      <div class="page-hero__media"><Picture name="Enscape_2025-07-25-17-55-22" alt="Fachada do edifício Arya Offices" eager width={1920} height={1080} /></div>
+      <div class="page-hero__media"><Picture name="lobby-corporativo" alt="Lobby corporativo do Arya Offices" eager width={1600} height={1067} /></div>
       <div class="page-hero__veil"></div>
       <div class="container page-hero__inner">
         <span class="kicker">Sobre o Arya</span>
@@ -62,7 +62,7 @@ const estrutura = [
     <section class="section section--dark">
       <div class="container about-split">
         <div class="about-split__media framed" data-reveal>
-          <Picture name="Enscape_2025-07-25-18-22-27" alt="Ambiente interno do Arya Offices" width={1100} height={1320} />
+          <Picture name="experiencia" alt="Ambiente interno do Arya Offices" width={1600} height={1067} />
         </div>
         <div class="about-split__text" data-reveal style="--reveal-delay:.1s">
           <span class="kicker">A experiência</span>
@@ -94,11 +94,16 @@ const estrutura = [
             empresas, equipes e visitantes.
           </p>
         </div>
-        <ul class="estrutura-grid" data-reveal>
-          {estrutura.map((item) => (
-            <li class="estrutura__item">
-              <span class="estrutura__mark" aria-hidden="true"></span>
-              {item}
+        <ul class="estrutura-grid">
+          {estrutura.map((item, i) => (
+            <li class="estr-card" data-reveal style={`--reveal-delay:${(i * 0.05).toFixed(2)}s`}>
+              <div class="estr-card__media">
+                <Picture name={item.img} alt={item.t} width={1200} height={800} />
+              </div>
+              <div class="estr-card__label">
+                <span class="estr-card__mark" aria-hidden="true"></span>
+                <h3 class="estr-card__t">{item.t}</h3>
+              </div>
             </li>
           ))}
         </ul>
@@ -138,19 +143,33 @@ const estrutura = [
   }
   .estrutura__lead { color: var(--stone); }
   .estrutura-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-    border: 1px solid var(--line-cream-soft); background: var(--line-cream-soft);
-    border-radius: var(--card-shape); overflow: hidden;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.85rem, 1.4vw, 1.25rem);
   }
-  .estrutura__item {
-    display: flex; align-items: center; gap: 0.9rem;
-    background: var(--bordo-deep);
-    padding: clamp(1.4rem, 2.2vw, 1.9rem) clamp(1.25rem, 1.8vw, 1.75rem);
-    font-size: 1.02rem; color: var(--cream);
-    transition: background var(--t-med) var(--ease);
+  .estr-card {
+    position: relative; isolation: isolate; overflow: hidden;
+    border-radius: var(--card-shape);
+    border: 1px solid var(--line-gold-soft);
+    transition: border-color var(--t-med) var(--ease), transform var(--t-med) var(--ease);
   }
-  .estrutura__item:hover { background: var(--bordo); }
-  .estrutura__mark { flex: none; width: 22px; height: 2px; background: var(--gold); }
+  .estr-card__media { overflow: hidden; }
+  .estr-card__media :global(img) {
+    width: 100%; height: clamp(175px, 20vw, 230px); object-fit: cover; display: block;
+    transition: transform var(--t-slow) var(--ease);
+  }
+  .estr-card:hover { border-color: var(--line-gold); transform: translateY(-3px); }
+  .estr-card:hover .estr-card__media :global(img) { transform: scale(1.06); }
+  .estr-card__label {
+    position: absolute; inset-inline: 0; bottom: 0; z-index: 1;
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: clamp(1.4rem, 2.4vw, 2rem) clamp(0.9rem, 1.4vw, 1.2rem) clamp(0.85rem, 1.3vw, 1.05rem);
+    background: linear-gradient(180deg, transparent, rgba(14,6,6,0.5) 45%, rgba(14,6,6,0.9));
+  }
+  .estr-card__mark { flex: none; width: 20px; height: 2px; background: var(--gold); }
+  .estr-card__t {
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.12rem); font-weight: 500;
+    color: var(--cream); letter-spacing: 0.01em; line-height: 1.2;
+  }
 
   @media (max-width: 880px) {
     .about-intro { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -160,6 +179,7 @@ const estrutura = [
     .estrutura-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 480px) {
-    .estrutura-grid { grid-template-columns: 1fr; }
+    .estrutura-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    .estr-card__media :global(img) { height: clamp(140px, 40vw, 180px); }
   }
 </style>

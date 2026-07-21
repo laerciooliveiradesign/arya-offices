@@ -7,12 +7,12 @@ import Picture from '../components/Picture.astro';
 const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
 
 const gallery = [
-  { name: 'Enscape_2025-07-25-18-19-59', label: 'Lobby corporativo' },
-  { name: 'interior-01', label: 'Estações de trabalho' },
-  { name: 'Enscape_2025-07-25-18-28-18', label: 'Sala de reuniões' },
-  { name: 'interior-02', label: 'Áreas de convivência' },
-  { name: 'Enscape_2025-07-25-18-40-02', label: 'Vista externa' },
-  { name: 'interior-04', label: 'Ambientes integrados' },
+  { name: 'lobby-corporativo', label: 'Lobby corporativo' },
+  { name: 'estacoes-de-trabalho', label: 'Estações de trabalho' },
+  { name: 'salas-de-reunioes', label: 'Sala de reuniões' },
+  { name: 'areas-de-conveniencia', label: 'Áreas de convivência' },
+  { name: 'vista-externa', label: 'Vista externa' },
+  { name: 'ambientes-integrados', label: 'Ambientes integrados' },
 ];
 
 const criterios = [
@@ -75,7 +75,7 @@ const criterios = [
         <div class="concept-grid">
           <article class="concept-card" data-reveal>
             <div class="concept-card__photo">
-              <Picture name="sala-reuniao-vidro" alt="Sala de reunião pronta para uso no modelo Plug & Play" width={1600} height={1067} />
+              <Picture name="plug-play-home" alt="Sala de reunião pronta para uso no modelo Plug & Play" width={1600} height={1067} />
             </div>
             <div class="concept-card__body">
               <span class="concept-card__idx">Plug &amp; Play</span>
@@ -93,7 +93,7 @@ const criterios = [
 
           <article class="concept-card" data-reveal style="--reveal-delay:.12s">
             <div class="concept-card__photo">
-              <Picture name="laje-livre" alt="Laje corporativa livre para personalizar no modelo por m²" width={1600} height={1067} />
+              <Picture name="m2-home" alt="Laje corporativa livre para personalizar no modelo por m²" width={1600} height={1067} />
             </div>
             <div class="concept-card__body">
               <span class="concept-card__idx">Por m²</span>
@@ -160,40 +160,44 @@ const criterios = [
     <!-- ░░ PARA QUEM É ░░ -->
     <section class="section section--dark quem" id="para-quem">
       <div class="container">
-        <header class="sec-head" data-reveal>
-          <span class="kicker">Para quem é</span>
-          <h2 class="h2">Quem pode ocupar o Arya.</h2>
-        </header>
+        <div class="quem__top">
+          <div class="quem__head" data-reveal>
+            <span class="kicker">Para quem é</span>
+            <h2 class="h2">Quem pode ocupar<br />o Arya.</h2>
+            <p class="lead quem__lead">
+              Os espaços são destinados exclusivamente a empresas de base
+              tecnológica, conforme as diretrizes do Polo Tecnológico Sul de Uberlândia.
+            </p>
+          </div>
 
-        <div class="quem__intro" data-reveal>
-          <p class="lead">
-            Os espaços são destinados exclusivamente a empresas de base tecnológica,
-            conforme as diretrizes do Polo Tecnológico Sul de Uberlândia.
-          </p>
-          <p class="quem__rule">
-            <span class="quem__rule-mark" aria-hidden="true"></span>
-            Para estar apta à ocupação, a empresa deve atender a <strong>pelo menos dois</strong>
-            dos seguintes critérios ligados à inovação.
-          </p>
+          <aside class="quem__gate" data-reveal style="--reveal-delay:.12s">
+            <span class="quem__gate-label">Regra de elegibilidade</span>
+            <div class="quem__gate-figure">
+              <span class="quem__gate-num">2</span>
+              <span class="quem__gate-den">de 5<br />critérios</span>
+            </div>
+            <p class="quem__gate-text">
+              Para se instalar, a empresa precisa atender a
+              <strong>pelo menos dois</strong> dos critérios de inovação abaixo.
+            </p>
+          </aside>
         </div>
 
-        <ol class="crit" data-reveal>
+        <ol class="crit">
           {criterios.map((c, i) => (
-            <li class="crit__item">
-              <span class="crit__num">{String(i + 1).padStart(2, '0')}</span>
-              <div class="crit__body">
-                <h3 class="crit__t">{c.t}</h3>
-                <p>{c.d}</p>
-              </div>
+            <li class="crit__row" data-reveal style={`--reveal-delay:${(i * 0.06).toFixed(2)}s`}>
+              <span class="crit__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="crit__title">{c.t}</h3>
+              <p class="crit__desc">{c.d}</p>
             </li>
           ))}
         </ol>
 
         <div class="quem__close" data-reveal>
-          <p>
-            A locação é voltada apenas para CNPJs, o que assegura um ambiente alinhado,
-            com negócios que compartilham desafios, linguagem e visão de crescimento,
-            fortalecendo o ecossistema do Polo.
+          <p class="quem__note">
+            A locação é voltada apenas para <strong>CNPJs</strong>, o que assegura um
+            ambiente alinhado, com negócios que compartilham desafios, linguagem e
+            visão de crescimento, fortalecendo o ecossistema do Polo.
           </p>
           <a class="btn btn--outline-gold" href="/contato">Vem conhecer nosso espaço</a>
         </div>
@@ -202,20 +206,19 @@ const criterios = [
 
     <!-- ░░ CTA FINAL ░░ -->
     <section class="cta-final" aria-label="Agende uma visita">
-      <div class="cta-final__media" aria-hidden="true">
-        <Picture name="Enscape_2025-07-25-18-20-47" alt="" width={1920} height={1080} />
-      </div>
-      <div class="cta-final__veil" aria-hidden="true"></div>
-      <div class="container cta-final__inner" data-reveal>
-        <span class="kicker kicker--center kicker--light">O próximo passo</span>
-        <h2 class="cta-final__title">Reserve o seu espaço no Arya.</h2>
-        <p class="lead">
-          Agende uma visita guiada ao edifício e descubra o modelo de locação ideal
-          para o momento da sua empresa.
-        </p>
-        <div class="cta-final__btns">
-          <a class="btn btn--lg" href="/contato">Agendar visita</a>
-          <a class="btn btn--ghost btn--lg" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <div class="cta-final__atmos" aria-hidden="true"></div>
+      <div class="container">
+        <div class="cta-final__panel" data-reveal>
+          <span class="kicker kicker--center kicker--light">O próximo passo</span>
+          <h2 class="cta-final__title">Reserve o seu espaço<br />no <span>Arya</span>.</h2>
+          <p class="cta-final__lead">
+            Agende uma visita guiada ao edifício e descubra o modelo de locação
+            ideal para o momento da sua empresa.
+          </p>
+          <div class="cta-final__btns">
+            <a class="btn btn--lg" href="/contato">Agendar visita</a>
+            <a class="btn btn--ghost btn--lg" href={wa} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
         </div>
       </div>
     </section>
@@ -377,73 +380,152 @@ const criterios = [
   .gal__item figcaption { display: inline-flex; align-items: center; gap: 0.6rem; }
   .gal__item figcaption::before { content: ""; width: 18px; height: 1px; background: var(--gold); flex: none; }
 
-  /* ───────── QUEM PODE OCUPAR ───────── */
-  .quem__intro {
-    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem);
-    align-items: start;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
-    padding-bottom: clamp(2rem, 4vw, 3rem);
-    border-bottom: 1px solid var(--line-cream-soft);
+  /* ───────── PARA QUEM É · dossiê de elegibilidade ───────── */
+  .quem__top {
+    display: grid;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
   }
-  .quem__intro .lead { color: var(--cream); }
-  .quem__rule {
-    display: flex; gap: 1rem; align-items: baseline;
-    color: var(--stone); font-size: 1.02rem; line-height: 1.6;
-  }
-  .quem__rule strong { color: var(--gold); font-weight: 600; }
-  .quem__rule-mark { flex: none; width: 28px; height: 2px; background: var(--gold); transform: translateY(-0.35em); }
+  .quem__head .h2 { margin-top: 0.9rem; }
+  .quem__lead { color: var(--stone); max-width: 42ch; margin-top: 1.5rem; }
 
-  /* critérios: lista editorial numerada com macron */
-  .crit { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .crit__item {
-    display: flex; gap: clamp(1rem, 1.6vw, 1.5rem);
-    padding: clamp(1.5rem, 2.2vw, 2rem) clamp(1rem, 2vw, 2rem);
-    border-bottom: 1px solid var(--line-cream-soft);
-    transition: background var(--t-med) var(--ease);
+  /* Gate "2 de 5" · âncora visual da regra de elegibilidade */
+  .quem__gate {
+    position: relative;
+    padding: clamp(1.75rem, 3vw, 2.6rem);
+    background: linear-gradient(158deg, var(--bordo) 0%, var(--bordo-deep) 100%);
+    border: 1px solid var(--line-gold);
+    border-radius: var(--shape-soft);
+    isolation: isolate;
+    overflow: hidden;
   }
-  .crit__item:hover { background: linear-gradient(120deg, rgba(80,21,15,0.2), transparent 70%); }
-  /* borda vertical entre as colunas nos itens ímpares (esquerda) */
-  .crit__item:nth-child(odd) { border-right: 1px solid var(--line-cream-soft); }
-  .crit__num {
-    flex: none; font-size: clamp(1.6rem, 1.1rem + 1.2vw, 2.1rem);
-    font-weight: 200; line-height: 1; color: var(--gold); letter-spacing: 0.02em;
+  .quem__gate::before { /* bracket TR grafismo da marca */
+    content: ""; position: absolute; top: 10px; right: 10px;
+    width: clamp(40px, 5vw, 58px); height: clamp(40px, 5vw, 58px);
+    border: 1px solid var(--gold); border-left: 0; border-bottom: 0;
+    border-top-right-radius: var(--r-lg); opacity: 0.75; pointer-events: none;
   }
-  .crit__body { display: flex; flex-direction: column; gap: 0.5rem; }
-  .crit__t { font-size: 1.15rem; font-weight: 500; color: var(--gold-soft); line-height: 1.25; }
-  .crit__body p { font-size: 0.92rem; color: var(--stone); line-height: 1.6; }
-  /* 5º critério (ímpar sozinho) ocupa a linha inteira */
-  .crit__item:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; }
+  .quem__gate-label {
+    font-size: var(--fs-kicker); font-weight: 500; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--gold-soft);
+  }
+  .quem__gate-figure { display: flex; align-items: flex-end; gap: 0.85rem; margin-top: 0.6rem; }
+  .quem__gate-num {
+    font-size: clamp(4.5rem, 3rem + 6vw, 7rem); font-weight: 200; line-height: 0.82;
+    color: var(--gold); letter-spacing: -0.04em;
+  }
+  .quem__gate-den {
+    font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.2rem); font-weight: 300; line-height: 1.1;
+    color: var(--stone); padding-bottom: 0.55rem; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .quem__gate-text { margin-top: 1.1rem; font-size: 0.98rem; line-height: 1.55; color: var(--stone); }
+  .quem__gate-text strong { color: var(--gold); }
+
+  /* Critérios · linhas editoriais tipo ficha técnica */
+  .crit { border-top: 1px solid var(--line-gold-soft); }
+  .crit__row {
+    display: grid;
+    grid-template-columns: clamp(64px, 7vw, 116px) minmax(150px, 0.8fr) 1.5fr;
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: start;
+    padding: clamp(1.5rem, 2.6vw, 2.4rem) clamp(0.5rem, 1.4vw, 1.3rem);
+    border-bottom: 1px solid var(--line-gold-soft);
+    position: relative;
+    transition: background var(--t-med) var(--ease), padding-left var(--t-med) var(--ease);
+  }
+  .crit__row::before { /* barra dourada que cresce no hover */
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: var(--gold);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform var(--t-med) var(--ease);
+  }
+  .crit__row:hover {
+    background: linear-gradient(90deg, rgba(80,21,15,0.42), transparent 78%);
+    padding-left: clamp(1rem, 2vw, 1.9rem);
+  }
+  .crit__row:hover::before { transform: scaleY(1); }
+  .crit__idx {
+    font-size: clamp(2rem, 1.3rem + 2.6vw, 3.4rem); font-weight: 200; line-height: 0.9;
+    letter-spacing: 0.02em; color: transparent;
+    -webkit-text-stroke: 1px var(--gold-deep);
+    transition: color var(--t-med) var(--ease);
+  }
+  .crit__row:hover .crit__idx { color: var(--gold); -webkit-text-fill-color: var(--gold); -webkit-text-stroke-color: var(--gold); }
+  .crit__title { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.42rem); font-weight: 500; color: var(--gold-soft); line-height: 1.25; }
+  .crit__desc { font-size: 0.95rem; color: var(--stone); line-height: 1.6; }
 
   .quem__close {
     display: flex; flex-direction: column; align-items: flex-start; gap: 1.75rem;
-    max-width: 62ch; margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    max-width: 64ch; margin-top: clamp(2.5rem, 4vw, 3.5rem);
   }
-  .quem__close p { color: var(--stone); font-size: 1.02rem; line-height: 1.65; }
+  .quem__note { color: var(--stone); font-size: 1.02rem; line-height: 1.65; }
+  .quem__note strong { color: var(--gold); }
 
-  /* ───────── CTA FINAL ───────── */
-  .cta-final { position: relative; padding-block: clamp(5rem, 4rem + 8vw, 9rem); overflow: hidden; isolation: isolate; text-align: center; }
-  .cta-final__media { position: absolute; inset: 0; z-index: -2; }
-  .cta-final__media :global(img) { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8); }
-  .cta-final__veil {
-    position: absolute; inset: 0; z-index: -1;
-    background: linear-gradient(180deg, rgba(42,10,7,0.88), rgba(14,6,6,0.9));
+  /* ───────── CTA FINAL · statement bordô com moldura arquitetônica ───────── */
+  .cta-final {
+    position: relative;
+    background: var(--bordo-deep);
+    color: var(--cream);
+    padding-block: clamp(5rem, 4rem + 8vw, 9.5rem);
+    overflow: hidden;
+    isolation: isolate;
   }
-  .cta-final__inner { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; max-width: 760px; }
+  .cta-final__atmos {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(58% 80% at 50% 6%, rgba(231,169,48,0.18), transparent 60%),
+      radial-gradient(95% 120% at 50% 122%, rgba(80,21,15,0.75), transparent 70%);
+  }
+  .cta-final .container { position: relative; z-index: 1; }
+  .cta-final__panel {
+    position: relative;
+    max-width: 800px; margin-inline: auto;
+    padding: clamp(2.75rem, 5vw, 4.75rem) clamp(1.5rem, 4vw, 4rem);
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
+  }
+  /* moldura em L (TL + BR) · cantos-assinatura da marca */
+  .cta-final__panel::before,
+  .cta-final__panel::after {
+    content: ""; position: absolute; pointer-events: none;
+    width: clamp(46px, 7vw, 96px); height: clamp(46px, 7vw, 96px);
+    border: 1px solid var(--line-gold);
+  }
+  .cta-final__panel::before { top: 0; left: 0; border-right: 0; border-bottom: 0; border-top-left-radius: var(--r-lg); }
+  .cta-final__panel::after  { bottom: 0; right: 0; border-left: 0; border-top: 0; border-bottom-right-radius: var(--r-lg); }
   .cta-final__title {
-    font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
-    font-weight: 300;
-    line-height: 1.14;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4rem);
+    font-weight: 300; line-height: 1.06; letter-spacing: -0.025em; margin-top: 0.4rem;
   }
-  .cta-final .lead { color: var(--stone); max-width: 46ch; }
-  .cta-final__btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 0.75rem; }
+  .cta-final__title span { color: var(--gold); font-weight: 400; }
+  .cta-final__lead {
+    font-size: var(--fs-lead); font-weight: 300; line-height: 1.55;
+    color: var(--stone); max-width: 48ch;
+  }
+  .cta-final__btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 0.9rem; }
 
   /* ───────── RESPONSIVE ───────── */
   @media (max-width: 880px) {
     .concept-grid { grid-template-columns: 1fr; }
     .loc__grid { grid-template-columns: 1fr; }
     .loc__media { order: -1; }
-    .quem__intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  /* Para quem é · empilha o topo e reflui as linhas no mobile */
+  @media (max-width: 900px) {
+    .quem__top { grid-template-columns: 1fr; align-items: start; gap: clamp(1.75rem, 5vw, 2.5rem); }
+    .quem__gate { max-width: 440px; }
+  }
+  @media (max-width: 760px) {
+    .crit__row {
+      grid-template-columns: clamp(48px, 12vw, 74px) 1fr;
+      column-gap: clamp(1rem, 4vw, 1.5rem); row-gap: 0.5rem;
+    }
+    .crit__idx { grid-column: 1; grid-row: 1 / span 2; }
+    .crit__title { grid-column: 2; grid-row: 1; align-self: center; }
+    .crit__desc { grid-column: 2; grid-row: 2; }
   }
 
   /* Mobile: hero limpo, sem quebras forçadas, espaçamento profissional */
@@ -469,9 +551,10 @@ const criterios = [
     .sec-head { margin-bottom: 2rem; }
     .concept-card__body { margin-inline: 0; }
   }
-  @media (max-width: 720px) {
-    .crit { grid-template-columns: 1fr; }
-    .crit__item:nth-child(odd) { border-right: 0; }
+  @media (max-width: 520px) {
+    .cta-final__panel { padding-inline: clamp(1rem, 5vw, 1.75rem); }
+    .cta-final__btns { flex-direction: column; align-items: stretch; width: 100%; }
+    .cta-final__btns .btn { width: 100%; }
   }
   @media (max-width: 520px) {
     .loc__stats { grid-template-columns: 1fr; gap: 1.25rem; text-align: left; }
