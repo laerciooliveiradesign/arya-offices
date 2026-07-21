@@ -143,7 +143,7 @@ const criterios = [
       <div class="container">
         <header class="sec-head sec-head--center" data-reveal>
           <span class="kicker kicker--center kicker--light">O lugar</span>
-          <h2 class="h2 gal__title">Espaços que acompanham a forma<br class="br-d" />como grandes ideias acontecem.</h2>
+          <h2 class="h2 gal__title">Espaços que acompanham a forma <br class="br-d" />como grandes ideias acontecem.</h2>
         </header>
       </div>
 
@@ -199,7 +199,7 @@ const criterios = [
             ambiente alinhado, com negócios que compartilham desafios, linguagem e
             visão de crescimento, fortalecendo o ecossistema do Polo.
           </p>
-          <a class="btn btn--outline-gold" href="/contato">Vem conhecer nosso espaço</a>
+          <a class="btn btn--outline-gold" href="/contato">Venha conhecer nosso espaço</a>
         </div>
       </div>
     </section>
@@ -465,6 +465,8 @@ const criterios = [
   }
   .quem__note { color: var(--stone); font-size: 1.02rem; line-height: 1.65; }
   .quem__note strong { color: var(--gold); }
+  /* rótulo longo: reduz o tracking padrão de botão p/ não ficar esticado */
+  .quem__close .btn { letter-spacing: 0.08em; }
 
   /* ───────── CTA FINAL · imagem de fundo + statement centralizado ───────── */
   .cta-final {
