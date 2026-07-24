@@ -5,7 +5,9 @@ import Footer from '../components/Footer.astro';
 import Picture from '../components/Picture.astro';
 
 const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
-// TODO: trocar SEU_ID pelo ID real do Formspree (destino: contato@aryaoffices.com.br)
+const EMAIL = 'contato@aryaoffices.com.br';
+// Formspree: ao criar o formulário (destino: contato@aryaoffices.com.br), troque SEU_ID abaixo.
+// Enquanto SEU_ID não é preenchido, o envio abre um e-mail pré-preenchido para o endereço acima (fallback mailto).
 const FORMSPREE = 'https://formspree.io/f/SEU_ID';
 const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bairro+G%C3%A1vea,+Uberl%C3%A2ndia+-+MG&output=embed';
 ---
@@ -39,7 +41,7 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
             ao edifício.
           </p>
 
-          <form class="cform mt-4" action={FORMSPREE} method="POST" data-form novalidate>
+          <form class="cform mt-4" action={FORMSPREE} method="POST" data-form data-email={EMAIL} novalidate>
             <div class="field">
               <input type="text" id="nome" name="nome" required autocomplete="name" placeholder=" " />
               <label for="nome">Nome completo</label>
@@ -82,6 +84,10 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
 
         <!-- Info + Mapa -->
         <aside class="contact-info" data-reveal style="--reveal-delay:.1s">
+          <div class="info-block">
+            <span class="info-label">E-mail</span>
+            <a class="info-link" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </div>
           <div class="info-block">
             <span class="info-label">WhatsApp</span>
             <a class="info-link" href={wa} target="_blank" rel="noopener noreferrer">+55 34 99829-3884</a>
@@ -194,10 +200,31 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
     e.preventDefault();
     if (!statusEl || !submitBtn) return;
 
-    // Guard: avisa se o Formspree ainda não foi configurado
+    // Enquanto o Formspree não estiver conectado, compõe um e-mail pré-preenchido
+    // para o endereço de contato (fallback mailto). Ao configurar o ID, usa o envio direto.
     if (form.action.includes('SEU_ID')) {
-      statusEl.className = 'cform__status err';
-      statusEl.textContent = 'Formulário ainda não conectado. Use o WhatsApp por enquanto.';
+      const email = form.dataset.email || 'contato@aryaoffices.com.br';
+      const data = new FormData(form);
+      const val = (k: string) => (data.get(k) || '').toString().trim();
+      if (!val('nome') || !val('email')) {
+        statusEl.className = 'cform__status err';
+        statusEl.textContent = 'Preencha ao menos nome e e-mail.';
+        return;
+      }
+      const corpo = [
+        `Nome: ${val('nome')}`,
+        `E-mail: ${val('email')}`,
+        `Telefone: ${val('telefone') || '-'}`,
+        `Empresa: ${val('empresa') || '-'}`,
+        `Modelo de interesse: ${val('modelo') || '-'}`,
+        '',
+        'Mensagem:',
+        val('mensagem') || '-',
+      ].join('\n');
+      const href = `mailto:${email}?subject=${encodeURIComponent('Contato pelo site: ' + val('nome'))}&body=${encodeURIComponent(corpo)}`;
+      window.location.href = href;
+      statusEl.className = 'cform__status ok';
+      statusEl.textContent = 'Abrindo seu aplicativo de e-mail para concluir o envio…';
       return;
     }
 
