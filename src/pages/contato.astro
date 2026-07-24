@@ -6,9 +6,9 @@ import Picture from '../components/Picture.astro';
 
 const wa = 'https://api.whatsapp.com/send/?phone=5534998293884&text&type=phone_number&app_absent=0&utm_source=site';
 const EMAIL = 'contato@aryaoffices.com.br';
-// Formspree: ao criar o formulário (destino: contato@aryaoffices.com.br), troque SEU_ID abaixo.
-// Enquanto SEU_ID não é preenchido, o envio abre um e-mail pré-preenchido para o endereço acima (fallback mailto).
-const FORMSPREE = 'https://formspree.io/f/SEU_ID';
+// Formspree conectado (form "Arya - Contato do site", destino: contato@aryaoffices.com.br).
+// O fallback mailto (no script) só entra em ação se este endpoint voltar a conter "SEU_ID".
+const FORMSPREE = 'https://formspree.io/f/xzdnjlon';
 const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bairro+G%C3%A1vea,+Uberl%C3%A2ndia+-+MG&output=embed';
 ---
 <BaseLayout
