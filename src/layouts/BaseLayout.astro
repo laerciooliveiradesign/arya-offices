@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Tracking from '../components/Tracking.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 
 interface Props {
   title?: string;
@@ -92,6 +93,7 @@ const year = new Date().getFullYear();
   <div class="grain" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <slot />
+  <WhatsAppFloat />
   <Tracking />
 
   <script>
