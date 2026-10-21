@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Política de privacidade (LGPD). Link exigido pelos formulários de anúncio da Meta.
+// Descreve só o que o site e os anúncios realmente coletam hoje: formulário de contato
+// (Formspree), formulários de anúncio no Facebook/Instagram, WhatsApp e, com consentimento,
+// Google Analytics + Meta Pixel (components/Tracking.astro).
+const EMAIL = 'contato@aryaoffices.com.br';
+const atualizado = '20 de outubro de 2026';
+---
+<BaseLayout
+  title="Política de privacidade · Arya Offices"
+  description="Como o Arya Offices coleta, usa e protege os dados pessoais de quem entra em contato pelo site, pelos anúncios ou pelo WhatsApp."
+  path="/privacidade"
+>
+  <Header />
+
+  <main id="main">
+    <section class="page-hero page-hero--short">
+      <div class="page-hero__veil"></div>
+      <div class="container page-hero__inner">
+        <span class="kicker">Transparência</span>
+        <h1 class="h1">Política de privacidade</h1>
+        <nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>Privacidade</span></nav>
+      </div>
+    </section>
+
+    <section class="section section--light">
+      <div class="container">
+        <article class="prose legal">
+          <p class="lead">
+            Esta política explica quais dados pessoais o Arya Offices recebe quando você entra em
+            contato com a gente, para que usamos esses dados e como você pode pedir acesso, correção
+            ou exclusão, conforme a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, LGPD).
+          </p>
+
+          <h2>1. Quem é o responsável pelos dados</h2>
+          <p>
+            O controlador dos dados é o Arya Offices, localizado no Polo Tecnológico Sul,
+            Uberlândia, MG. Para qualquer assunto sobre dados pessoais, fale com a gente pelo
+            e-mail <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+          </p>
+
+          <h2>2. Quais dados coletamos</h2>
+          <p>Coletamos apenas os dados que você mesmo informa, por estes canais:</p>
+          <ul>
+            <li>
+              <strong>Formulário de contato do site:</strong> nome, e-mail, telefone, empresa, modelo
+              de locação de interesse e a mensagem que você escrever.
+            </li>
+            <li>
+              <strong>Formulários de anúncios no Facebook e no Instagram:</strong> nome, e-mail,
+              telefone, empresa e as respostas às perguntas do formulário (por exemplo, modelo de
+              locação, quantidade de pessoas e prazo previsto).
+            </li>
+            <li>
+              <strong>WhatsApp, e-mail e telefone:</strong> o nome, o número ou endereço e o conteúdo
+              das mensagens que você nos enviar.
+            </li>
+          </ul>
+          <p>Não pedimos documentos, dados bancários nem dados sensíveis por esses canais.</p>
+
+          <h2>3. Para que usamos</h2>
+          <ul>
+            <li>Responder seu contato e apresentar as opções de locação disponíveis;</li>
+            <li>Agendar visitas e enviar propostas que você solicitou;</li>
+            <li>Dar continuidade a uma negociação ou contrato, quando houver.</li>
+          </ul>
+          <p>
+            A base legal é o seu consentimento ao enviar os dados e, quando houver negociação, os
+            procedimentos preliminares de um contrato (art. 7º, I e V, da LGPD). Não vendemos seus
+            dados e não usamos para outras finalidades sem avisar.
+          </p>
+
+          <h2>4. Com quem os dados são compartilhados</h2>
+          <p>Seus dados passam apenas pelos serviços necessários para recebê-los e respondê-los:</p>
+          <ul>
+            <li><strong>Meta (Facebook e Instagram):</strong> quando você preenche um formulário de anúncio;</li>
+            <li><strong>Formspree:</strong> serviço que entrega as mensagens do formulário do site ao nosso e-mail;</li>
+            <li><strong>WhatsApp e provedores de e-mail:</strong> quando você nos escreve por esses canais;</li>
+            <li>
+              <strong>Ferramentas internas de gestão de contatos</strong> usadas pela nossa equipe e
+              por quem nos presta serviço de marketing, apenas para organizar e responder os contatos.
+            </li>
+          </ul>
+          <p>
+            Alguns desses serviços podem armazenar dados fora do Brasil, seguindo as regras de
+            transferência internacional da LGPD.
+          </p>
+
+          <h2>5. Por quanto tempo guardamos</h2>
+          <p>
+            Guardamos os dados enquanto houver conversa ou relação comercial com você e, depois disso,
+            pelo tempo necessário para cumprir obrigações legais. Você pode pedir a exclusão a qualquer
+            momento (veja o item 6).
+          </p>
+
+          <h2>6. Seus direitos</h2>
+          <p>Pela LGPD, você pode, a qualquer momento:</p>
+          <ul>
+            <li>confirmar se tratamos seus dados e ter acesso a eles;</li>
+            <li>corrigir dados incompletos ou desatualizados;</li>
+            <li>pedir a exclusão dos seus dados ou revogar o consentimento;</li>
+            <li>pedir informações sobre com quem compartilhamos seus dados.</li>
+          </ul>
+          <p>
+            Para isso, escreva para <a href={`mailto:${EMAIL}`}>{EMAIL}</a>. Respondemos o quanto antes
+            e no prazo previsto em lei.
+          </p>
+
+          <h2>7. Cookies e medição de visitas</h2>
+          <p>
+            Com a sua permissão (o aviso que aparece na primeira visita), o site usa o
+            <strong>Google Analytics</strong>, para entender quantas pessoas visitam e quais páginas
+            acessam, e o <strong>Meta Pixel</strong>, para medir os resultados dos nossos anúncios no
+            Facebook e no Instagram (por exemplo, quando alguém envia o formulário de contato ou clica
+            no WhatsApp). Essas ferramentas usam cookies e identificadores do seu navegador, tratados
+            pelo Google e pela Meta conforme as políticas de privacidade deles.
+          </p>
+          <p>
+            Se você clicar em "Recusar", nenhuma dessas ferramentas é carregada. Para mudar a escolha,
+            limpe os dados de navegação deste site no seu navegador e o aviso aparece de novo. A página
+            de contato também mostra um mapa do Google Maps, que pode usar cookies próprios do Google.
+          </p>
+
+          <h2>8. Segurança</h2>
+          <p>
+            Usamos conexão segura (HTTPS) e limitamos o acesso aos dados às pessoas que precisam deles
+            para responder você.
+          </p>
+
+          <h2>9. Mudanças nesta política</h2>
+          <p>
+            Podemos atualizar esta política quando mudarmos a forma de tratar dados. A data da última
+            atualização fica sempre no fim desta página.
+          </p>
+
+          <p class="legal__date">Última atualização: {atualizado}.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal { max-width: 760px; }
+  .legal h2 {
+    font-size: 1.25rem;
+    margin-top: 2.6rem;
+    margin-bottom: 0.8rem;
+  }
+  .legal ul {
+    margin: 0.8rem 0 0 1.2rem;
+    padding: 0;
+    list-style: disc;
+  }
+  .legal li { margin-top: 0.5rem; max-width: var(--max-text); }
+  .legal a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+  .legal__date { margin-top: 3rem; opacity: 0.7; font-size: 0.9rem; }
+</style>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Tracking from '../components/Tracking.astro';
 
 interface Props {
   title?: string;
@@ -85,31 +86,13 @@ const year = new Date().getFullYear();
     sameAs: ['https://www.instagram.com/aryaoffices/'],
   })} />
 
-  <!-- ───────── TODO: Google Analytics 4 (descomentar c/ ID real) ─────────
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA_MEASUREMENT_ID');
-  </script>
-  ──────────────────────────────────────────────────────────────────────── -->
-
-  <!-- ───────── TODO: Meta Pixel (descomentar c/ ID real) ─────────
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','PIXEL_ID'); fbq('track','PageView');
-  </script>
-  ──────────────────────────────────────────────────────────── -->
+  <!-- GA4 e Meta Pixel: carregam só depois do aceite (components/Tracking.astro, no fim do body) -->
 </head>
 <body data-year={year}>
   <div class="grain" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <slot />
+  <Tracking />
 
   <script>
     // Reveal on scroll · compartilhado por todas as páginas

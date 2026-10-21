@@ -242,6 +242,7 @@ const mapsEmbed = 'https://www.google.com/maps?q=Polo+Tecnol%C3%B3gico+Sul,+Bair
       });
       if (res.ok) {
         form.reset();
+        (window as any).aryaTrack?.('Lead');
         statusEl.className = 'cform__status ok';
         statusEl.textContent = 'Recebido! Entraremos em contato em breve.';
       } else {
