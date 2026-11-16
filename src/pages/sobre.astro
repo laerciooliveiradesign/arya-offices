@@ -23,29 +23,19 @@ const estrutura = [
   <Header active="sobre" />
 
   <main id="main">
-    <!-- Page hero -->
-    <section class="page-hero">
-      <div class="page-hero__media"><Picture name="lobby-corporativo" alt="Lobby corporativo do Arya Offices" eager width={1600} height={1067} /></div>
-      <div class="page-hero__veil"></div>
-      <div class="container page-hero__inner">
-        <span class="kicker">Sobre o Arya</span>
-        <h1 class="h1 about-hero__title">Infraestrutura inteligente para empresas que não param de evoluir.</h1>
-        <nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>Sobre</span></nav>
-      </div>
-    </section>
-
-    <!-- Vídeo institucional · destaque da página.
+    <!-- Topo: título e, em seguida, o vídeo institucional (destaque da página).
          Fachada leve: só carrega o player do YouTube (domínio nocookie) quando a pessoa clica. -->
-    <section class="section section--dark video-feature" aria-labelledby="video-title">
+    <section class="about-top">
       <div class="container">
-        <div class="video-feature__head" data-reveal>
-          <span class="kicker">O Arya em movimento</span>
-          <h2 class="h2 mt-2" id="video-title">Entre e conheça o edifício.</h2>
+        <div class="about-top__head">
+          <span class="kicker">Sobre o Arya</span>
+          <h1 class="h1 about-hero__title">Infraestrutura inteligente para empresas que não param de evoluir.</h1>
+          <nav class="breadcrumb" aria-label="Trilha"><a href="/">Início</a> / <span>Sobre</span></nav>
         </div>
 
-        <div class="video-feature__stage framed" data-reveal style="--reveal-delay:.1s">
+        <div class="video-feature__stage framed">
           <div class="video-player" data-video="yh0WtwOHFjQ">
-            <Picture name="video-institucional" alt="" width={1280} height={720} />
+            <Picture name="video-institucional" alt="" eager width={1280} height={720} />
             <button type="button" class="video-player__play" aria-label="Assistir ao vídeo institucional do Arya Offices">
               <span class="video-player__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z"/></svg>
@@ -170,10 +160,27 @@ const estrutura = [
 <style>
   .about-hero__title { max-width: 20ch; text-wrap: balance; }
 
-  /* Vídeo institucional */
-  .video-feature__head { text-align: center; margin-bottom: clamp(2.2rem, 4.5vw, 3.5rem); }
-  .video-feature__head .kicker { justify-content: center; }
-  .video-feature__stage { max-width: 1180px; margin-inline: auto; }
+  /* Topo: título + vídeo institucional */
+  .about-top {
+    position: relative; isolation: isolate;
+    padding-top: calc(var(--header-h) + clamp(1.5rem, 3.5vw, 3rem));
+    padding-bottom: var(--section-y);
+    background:
+      radial-gradient(90% 60% at 20% 0%, rgba(80,21,15,0.45), transparent 70%),
+      var(--black);
+    color: var(--cream);
+  }
+  .about-top__head { margin-bottom: clamp(2rem, 3.5vw, 3rem); }
+  .about-top .about-hero__title { max-width: 28ch; }
+  .about-top__head .h1 { margin-top: 1rem; }
+  .about-top .breadcrumb {
+    display: flex; gap: 0.6rem; align-items: center;
+    font-size: var(--fs-small); letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--stone); margin-top: 1.2rem;
+  }
+  .about-top .breadcrumb a:hover { color: var(--gold); }
+  .about-top .breadcrumb span { color: var(--gold); }
+  .video-feature__stage { max-width: 1180px; }
   .video-player {
     position: relative; z-index: 1; isolation: isolate; overflow: hidden;
     aspect-ratio: 16 / 9;
